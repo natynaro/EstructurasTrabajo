@@ -79,6 +79,7 @@ public class Administrador {
 		 }else {//un throw? de que no se encontró un plato con este nombre}
 		 }
 	}
+	//probando los cambios en git
 
 	//me dan los nombres platos, entonces uso elmétodo buscar plato para crear el array deplatos y ya creo el usuario que va a hacerel pedido
 	public void NuevoPedido(String[] nombresPlatos, String nombreUsu, String direccionUsu, String telefonoUsu){
