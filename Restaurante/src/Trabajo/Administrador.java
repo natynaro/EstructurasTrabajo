@@ -3,19 +3,19 @@ package Trabajo;
 import java.math.BigInteger;
 import java.util.*;
 
+import gui.JDomiciliario;
+
 public class Administrador {
 	private Pedidos[] pedidosTotal;
 	private Ingredientes[] ingredientesTotal;
 	private Platos[] platosTotal;
 	private Domiciliario[] domiciliarios;
 	
-	public Administrador(Pedidos[] pedidosTotal, Ingredientes[] ingredientesTotal, Platos[] platosTotal,
-			Domiciliario[] domiciliarios) {
-		super();
-		this.pedidosTotal = pedidosTotal;
-		this.ingredientesTotal = ingredientesTotal;
-		this.platosTotal = platosTotal;
-		this.domiciliarios = domiciliarios;
+	public Administrador() {
+		this.pedidosTotal = new Pedidos[0];
+		this.ingredientesTotal = new Ingredientes[0];
+		this.platosTotal = new Platos[0];
+		this.domiciliarios = new Domiciliario[0];
 	}
 
 	public Pedidos[] getPedidosTotal() {
@@ -257,6 +257,19 @@ public class Administrador {
 		}else {
 			domiciliarios = Arrays.copyOf(domiciliarios, domiciliarios.length + 1);
 			domiciliarios[domiciliarios.length - 1] = new Domiciliario(nombre);
+		}
+	}
+
+
+
+	//Métodos para la interfaz
+	
+	public void presentarVentanaDomiciliario() {
+		try {
+			JDomiciliario frame = new JDomiciliario();
+			frame.setVisible(true);
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 }

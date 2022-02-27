@@ -13,14 +13,20 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 
-public class JDomiciliario extends JFrame {
+public class JDomiciliario extends JFrame implements ActionListener{
 
 	private JPanel PanelDomiciliario;
 	private JLabel lblTitulo;
+	private JButton btnvolver;
+	private JButton btnListaDomiciliarios;
+	private JButton btnEliminarDomiciliario;
+	private JButton btnAñadirDomiciliario;
 
 	/**
 	 * Launch the application.
+	 * 
 	 */
+	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -33,12 +39,17 @@ public class JDomiciliario extends JFrame {
 			}
 		});
 	}
-
+	
 	/**
 	 * Create the frame.
 	 */
 	public JDomiciliario() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		setTitle("VENTANA DOMICILIARIO");setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		iniciarComponentes();	
+	}
+	
+	public void iniciarComponentes() {
 		setBounds(100, 100, 450, 300);
 		PanelDomiciliario = new JPanel();
 		PanelDomiciliario.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -51,25 +62,41 @@ public class JDomiciliario extends JFrame {
 		lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
 		PanelDomiciliario.add(lblTitulo);
 		
-		JButton btnAñadirDomiciliario = new JButton("Añadir domiciliario");
+		btnAñadirDomiciliario = new JButton("Añadir domiciliario");
 		btnAñadirDomiciliario.setBounds(26, 85, 187, 50);
-		btnAñadirDomiciliario.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
+		btnAñadirDomiciliario.addActionListener(this);
 		PanelDomiciliario.add(btnAñadirDomiciliario);
 		
-		JButton btnEliminarDomiciliario = new JButton("Eliminar domiciliario");
+		btnEliminarDomiciliario = new JButton("Eliminar domiciliario");
 		btnEliminarDomiciliario.setBounds(253, 85, 164, 50);
+		btnEliminarDomiciliario.addActionListener(this);
 		PanelDomiciliario.add(btnEliminarDomiciliario);
 		
-		JButton btnListaDomiciliarios = new JButton("Mostrar lista domiciliario");
+		btnListaDomiciliarios = new JButton("Mostrar lista domiciliario");
 		btnListaDomiciliarios.setBounds(130, 157, 202, 50);
+		btnListaDomiciliarios.addActionListener(this);
 		PanelDomiciliario.add(btnListaDomiciliarios);
 		
-		JButton btnvolver = new JButton("volver");
+		btnvolver = new JButton("volver");
 		btnvolver.setBounds(5, 238, 112, 29);
+		btnvolver.addActionListener(this);
 		PanelDomiciliario.add(btnvolver);
+	}
+
+	
+	public void actionPerformed(ActionEvent e) {
+		if(btnvolver==e.getSource()) {
+			
+		}
+		if(btnListaDomiciliarios==e.getSource()) {
+			
+		}
+		if(btnEliminarDomiciliario==e.getSource()) {
+			
+		}
+		if(btnAñadirDomiciliario==e.getSource()) {
+	
+		}
 	}
 
 }
