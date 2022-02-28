@@ -78,7 +78,7 @@ public class JDomiciliario extends JFrame implements ActionListener{
 		PanelDomiciliario.add(btnListaDomiciliarios);
 		
 		btnvolver = new JButton("volver");
-		btnvolver.setBounds(5, 238, 112, 29);
+		btnvolver.setBounds(5, 238, 100, 30);
 		btnvolver.addActionListener(this);
 		PanelDomiciliario.add(btnvolver);
 	}
