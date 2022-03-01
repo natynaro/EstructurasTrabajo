@@ -22,7 +22,7 @@ public class restaurant extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					resta frame = new resta();
+					restaurant frame = new restaurant();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -34,7 +34,7 @@ public class restaurant extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public resta() {
+	public restaurant() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
