@@ -78,9 +78,8 @@ public class Administrador {
 		 }else {//un throw? de que no se encontró un plato con este nombre}
 		 }
 	}
-	//probando los cambios en git
 
-	//me dan los nombres platos, entonces uso elmétodo buscar plato para crear el array deplatos y ya creo el usuario que va a hacerel pedido
+	//me dan los nombres platos, entonces uso el método buscar plato para crear el array de platos y se crea el usuario que va a hacer el pedido
 	public void NuevoPedido(String[] nombresPlatos, String nombreUsu, String direccionUsu, String telefonoUsu){
 		
 		Platos[] platosPedir= new Platos[0];
@@ -130,8 +129,8 @@ public class Administrador {
 		
 	}
 	
-	//REVISAR,que entonces elnombre se haga con to.Lowercase para que dé la búsqueda del plato
-	//
+	//REVISAR, que entonces elnombre se haga con to.Lowercase para que dé la búsqueda del plato
+
 	public void addPlato(String nombre,Ingredientes[] ingredientesTotal, double precio) {
 		if(buscarPlato(nombre) == -1) {
 			platosTotal= Arrays.copyOf(platosTotal,platosTotal.length+1);
@@ -259,7 +258,6 @@ public class Administrador {
 			domiciliarios[domiciliarios.length - 1] = new Domiciliario(nombre);
 		}
 	}
-
 
 
 	//Métodos para la interfaz
