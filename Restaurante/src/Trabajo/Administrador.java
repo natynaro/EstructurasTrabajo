@@ -5,6 +5,9 @@ import java.util.*;
 
 import gui.JDomiciliario;
 
+//REVISAR, que entonces elnombre se haga con to.Lowercase para que dé la búsqueda del plato
+//REVISAR EL THROW Y CAMBIARLO DE DEVOLVER-1
+
 public class Administrador {
 	private Pedidos[] pedidosTotal;
 	private Ingredientes[] ingredientesTotal;
@@ -129,8 +132,7 @@ public class Administrador {
 		
 	}
 	
-	//REVISAR, que entonces elnombre se haga con to.Lowercase para que dé la búsqueda del plato
-
+	//se crea un nuevo plato con nombre, sus ingredientes y el precio
 	public void addPlato(String nombre,Ingredientes[] ingredientesTotal, double precio) {
 		if(buscarPlato(nombre) == -1) {
 			platosTotal= Arrays.copyOf(platosTotal,platosTotal.length+1);
@@ -138,7 +140,7 @@ public class Administrador {
 		}
 	}
 	
-	
+	//se borra el plato de acuerdo con el nombre
 	public void borrarPlato(String nombre) {
 		if(buscarPlato(nombre) != -1) {
 			int i=buscarPlato(nombre);
@@ -151,7 +153,6 @@ public class Administrador {
 			}
 	}
 	
-	//REVISAR EL THROW Y CAMBIARLO DE DEVOLVER-1
 	//Deacuerdo al nombre del plato, se devuelve la posicion del Plato en caso de existir
 	public int buscarPlato(String Nombre) {
 		String n= Nombre.toLowerCase();
@@ -166,21 +167,32 @@ public class Administrador {
 		}
 	}
 	
-	//Lo de luis
-	
+	//de acuerdo al nombre, se busca la posicion del domiciliario con ese nombre
 	public int buscarDomiciliario(String nombre) {
-		String n= nombre.toLowerCase();
-		int i =0;
-		while(i<domiciliarios.length && !n.equals(domiciliarios[i].getNombre())) {
-			i++;
+			String n= nombre.toLowerCase();
+			int i =0;
+			while(i<domiciliarios.length && !n.equals(domiciliarios[i].getNombre())) {
+				i++;
+			}
+			if(i<domiciliarios.length) {
+				return i;
+			}else {
+				return -1;
+			}
 		}
-		if(i<domiciliarios.length) {
-			return i;
+	
+	//seañade un domiciliario con este nombre
+	public void addDomiciliario(String nombre) {
+		if(domiciliarios == null) {
+			domiciliarios = new Domiciliario[1];
+			domiciliarios[0] = new Domiciliario(nombre);
 		}else {
-			return -1;
+			domiciliarios = Arrays.copyOf(domiciliarios, domiciliarios.length + 1);
+			domiciliarios[domiciliarios.length - 1] = new Domiciliario(nombre);
 		}
 	}
 	
+	//se elimina el domiciliario con este nombre
 	public void quitarDomiciliario(String nombre) {
 		int d = buscarDomiciliario(nombre);
 		if(domiciliarios!=null && domiciliarios.length>0) {
@@ -191,6 +203,7 @@ public class Administrador {
 		}
 	}
 	
+	//se busca el domiciliario disponible en el arreglo de domiciliarios
 	public Domiciliario buscarDomDisponible() {
 		int i=0;
 		
@@ -200,6 +213,7 @@ public class Administrador {
 		return (i<domiciliarios.length)?domiciliarios[i]:null;
 	}
 	
+	//
 	public double ventasDelDia() {
 		double v=0;
 		if(pedidosTotal!=null) {
@@ -209,6 +223,8 @@ public class Administrador {
 		}
 		return v;
 	}
+	
+	//
 	public String reporteDiario() {
 		String a="";
 		if(pedidosTotal!=null) {
@@ -219,6 +235,7 @@ public class Administrador {
 		return a;
 	}
 
+	//
 	public void AddIngrediente(String nombre, int cantidad) {
 		if(ingredientesTotal == null) {
 			ingredientesTotal = new Ingredientes[1];
@@ -229,6 +246,7 @@ public class Administrador {
 		}
 	}
 	
+	//
 	public void EliminarIngrediente(String nombre) throws EListaIngredientesVacia, EIngredienteNoExiste {
 		boolean seEncontroElIngrediente = false;
 		if(ingredientesTotal != null && ingredientesTotal.length > 0) {
@@ -249,16 +267,6 @@ public class Administrador {
 		}
 	}
 	
-	public void addDomiciliario(String nombre) {
-		if(domiciliarios == null) {
-			domiciliarios = new Domiciliario[1];
-			domiciliarios[0] = new Domiciliario(nombre);
-		}else {
-			domiciliarios = Arrays.copyOf(domiciliarios, domiciliarios.length + 1);
-			domiciliarios[domiciliarios.length - 1] = new Domiciliario(nombre);
-		}
-	}
-
 
 	//Métodos para la interfaz
 	

@@ -22,7 +22,7 @@ public class JRestaurante extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					restaurant frame = new restaurant();
+					JRestaurante frame = new JRestaurante();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
