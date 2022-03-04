@@ -94,7 +94,6 @@ public class JInfoDomiciliario extends JFrame implements ActionListener{
 		}
 	}
 
-	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(btnvolver==e.getSource()) {
 			JDomiciliario JD= new JDomiciliario();

@@ -13,7 +13,7 @@ import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class VentanaEliminarIngrediente extends JFrame {
+public class VentanaEliminarIngrediente extends JFrame implements ActionListener{
 
 	/**
 	 * 
@@ -86,4 +86,11 @@ public class VentanaEliminarIngrediente extends JFrame {
 		textField.setBounds(114, 107, 215, 28);
 		contentPane.add(textField);
 	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	
 }

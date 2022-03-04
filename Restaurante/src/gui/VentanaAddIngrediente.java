@@ -16,7 +16,7 @@ import javax.swing.DefaultComboBoxModel;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class VentanaAddIngrediente extends JFrame {
+public class VentanaAddIngrediente extends JFrame implements ActionListener{
 
 	/**
 	 * 
@@ -100,5 +100,11 @@ public class VentanaAddIngrediente extends JFrame {
 		btnAadir.setBackground(Color.RED);
 		btnAadir.setBounds(169, 179, 97, 21);
 		contentPane.add(btnAadir);
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 }
