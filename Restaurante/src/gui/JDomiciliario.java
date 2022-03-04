@@ -90,16 +90,20 @@ public class JDomiciliario extends JFrame implements ActionListener{
 	
 	public void actionPerformed(ActionEvent e) {
 		if(btnvolver==e.getSource()) {
-			
+			JRestaurante JR= new JRestaurante();
+			JR.setVisible(true);
 		}
 		if(btnListaDomiciliarios==e.getSource()) {
-			
+			JInfoDomiciliario JID= new JInfoDomiciliario("ListaDomiciliarios");
+			JID.setVisible(true);
 		}
 		if(btnEliminarDomiciliario==e.getSource()) {
-			
+			JInfoDomiciliario JID= new JInfoDomiciliario("EliminarDomiciliario");
+			JID.setVisible(true);
 		}
 		if(btnAñadirDomiciliario==e.getSource()) {
-	
+			JInfoDomiciliario JID= new JInfoDomiciliario("AñadirDomiciliario");
+			JID.setVisible(true);
 		}
 	}
 
