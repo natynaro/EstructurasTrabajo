@@ -6,6 +6,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import Trabajo.Administrador;
+
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import javax.swing.JButton;
@@ -21,6 +24,7 @@ public class JDomiciliario extends JFrame implements ActionListener{
 	private JButton btnListaDomiciliarios;
 	private JButton btnEliminarDomiciliario;
 	private JButton btnAñadirDomiciliario;
+	private Administrador administrador;
 
 	/**
 	 * Launch the application.
