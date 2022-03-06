@@ -24,7 +24,6 @@ public class JInfoIgrediente extends JFrame implements ActionListener{
 
 	private JPanel contentPane;
 	private String accion;
-	private JPanel JInfoIgrediente;
 	private JTextField txtNombreIngrediente;
 	private JButton btnVolver;
 	private JButton btnAceptar;
