@@ -33,22 +33,6 @@ public class JPlatos extends JFrame implements ActionListener{
 	private Administrador administrador;
 
 	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					JPlatos frame = new JPlatos();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
 	 * Create the frame.
 	 */
 	public JPlatos() {

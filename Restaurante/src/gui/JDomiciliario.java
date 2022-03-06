@@ -26,23 +26,6 @@ public class JDomiciliario extends JFrame implements ActionListener{
 	private JButton btnAddDomiciliario;
 	private Administrador administrador;
 
-	/**
-	 * Launch the application.
-	 * 
-	 */
-	
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					JDomiciliario frame = new JDomiciliario();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 	
 	/**
 	 * Create the frame.
