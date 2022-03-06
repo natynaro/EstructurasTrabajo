@@ -112,7 +112,7 @@ public class JRestaurante extends JFrame implements ActionListener{
 		}*/
 		
 		if(btnIngredientes==e.getSource()) {
-			JIngrediente JI= new JIngrediente();
+			JIngredientes JI= new JIngredientes();
 			JI.setVisible(true);
 		}
 		/*
