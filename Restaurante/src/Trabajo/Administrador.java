@@ -267,17 +267,7 @@ public class Administrador {
 		}
 	}
 	
-
-	//Métodos para la interfaz
-	
-	public void presentarVentanaDomiciliario() {
-		try {
-			JDomiciliario frame = new JDomiciliario();
-			frame.setVisible(true);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
+//EXCEPCIONES
 	
 	public class EListaIngredientesNull extends Exception{
 		public EListaIngredientesNull() {
