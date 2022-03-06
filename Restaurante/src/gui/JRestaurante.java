@@ -11,9 +11,25 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-public class JRestaurante extends JFrame {
+import Trabajo.Administrador;
+
+import java.awt.SystemColor;
+import javax.swing.JLabel;
+import java.awt.Font;
+import javax.swing.SwingConstants;
+
+public class JRestaurante extends JFrame implements ActionListener{
 
 	private JPanel contentPane;
+	private JButton btnPlatos;
+	private JLabel lblRestaurante;
+	private JButton btnDomiciliarios;
+	private JButton btnPedidos;
+	private JButton btnIngredientes;
+	private JButton btnContabilidad;
+	private Administrador administrador;
+	
+	
 
 	/**
 	 * Launch the application.
@@ -35,50 +51,75 @@ public class JRestaurante extends JFrame {
 	 * Create the frame.
 	 */
 	public JRestaurante() {
+		setTitle("VENTANA RESTAURANTE");setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		iniciarComponentes();
+		
+	}
+	public void iniciarComponentes() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
-		contentPane.setBackground(Color.LIGHT_GRAY);
+		contentPane.setBackground(SystemColor.window);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JButton btnNewButton = new JButton("Funciones administrativas");
-		btnNewButton.setBackground(Color.RED);
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnNewButton.setBounds(31, 78, 151, 36);
-		contentPane.add(btnNewButton);
+		btnPlatos = new JButton("Platos");
+		btnPlatos.setBounds(235, 63, 187, 50);
+		btnPlatos.addActionListener(this);
+		contentPane.add(btnPlatos);
 		
-		JButton btnNewButton_1 = new JButton("Platos");
-		btnNewButton_1.setBackground(Color.RED);
-		btnNewButton_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnNewButton_1.setBounds(245, 78, 85, 21);
-		contentPane.add(btnNewButton_1);
+		lblRestaurante = new JLabel("Restaurante");
+		lblRestaurante.setHorizontalAlignment(SwingConstants.CENTER);
+		lblRestaurante.setFont(new Font("Lucida Grande", Font.PLAIN, 24));
+		lblRestaurante.setBounds(6, 17, 440, 29);
+		contentPane.add(lblRestaurante);
 		
-		JButton btnNewButton_2 = new JButton("Domiciliarios");
-		btnNewButton_2.setBackground(Color.RED);
-		btnNewButton_2.setBounds(53, 156, 97, 21);
-		contentPane.add(btnNewButton_2);
+		btnDomiciliarios = new JButton("Domiciliarios");
+		btnDomiciliarios.setBounds(31, 138, 164, 50);
+		btnDomiciliarios.addActionListener(this);
+		contentPane.add(btnDomiciliarios);
 		
-		JButton btnNewButton_3 = new JButton("Pedidos");
-		btnNewButton_3.setBackground(Color.RED);
-		btnNewButton_3.setBounds(245, 156, 85, 21);
-		contentPane.add(btnNewButton_3);
+		btnPedidos = new JButton("Pedidos");
+		btnPedidos.setBounds(31, 63, 164, 50);
+		btnPedidos.addActionListener(this);
+		contentPane.add(btnPedidos);
 		
-		JButton btnNewButton_4 = new JButton("Clientes");
-		btnNewButton_4.setBackground(Color.RED);
-		btnNewButton_4.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnNewButton_4.setBounds(152, 198, 85, 21);
-		contentPane.add(btnNewButton_4);
+		btnIngredientes = new JButton("Ingredientes");
+		btnIngredientes.setBounds(235, 128, 187, 50);
+		btnIngredientes.addActionListener(this);
+		contentPane.add(btnIngredientes);
+		
+		btnContabilidad = new JButton("Contabilidad");
+		btnContabilidad.setBounds(130, 194, 187, 50);
+		btnContabilidad.addActionListener(this);
+		contentPane.add(btnContabilidad);
 	}
 
+	public void actionPerformed(ActionEvent e) {
+	
+		 if(btnPlatos==e.getSource()) {
+			JPlatos JP= new JPlatos();
+			JP.setVisible(true);
+		}
+		if(btnDomiciliarios==e.getSource()) {
+			JDomiciliario JD= new JDomiciliario();
+			JD.setVisible(true);
+		}
+		/*if(btnPedidos==e.getSource()) {
+			JInfoDomiciliario JID= new JInfoDomiciliario("EliminarDomiciliario");
+			JID.setVisible(true);
+		}*/
+		
+		if(btnIngredientes==e.getSource()) {
+			JIngrediente JI= new JIngrediente();
+			JI.setVisible(true);
+		}
+		/*
+		if(btnContabilidad==e.getSource()) {
+			VentanaIngredientes JI= new VentanaIngredientes();
+			JI.setVisible(true);
+			}*/
+		
+	}
 }

@@ -62,7 +62,7 @@ public class VentanaEliminarIngrediente extends JFrame implements ActionListener
 		btnNewButton.setBounds(168, 165, 97, 21);
 		contentPane.add(btnNewButton);
 		
-		final VentanaIngredientes menuPrincipal = new VentanaIngredientes();
+		final JIngrediente menuPrincipal = new JIngrediente();
 		
 		btnVolver = new JButton("Volver");
 		btnVolver.addActionListener(new ActionListener() {

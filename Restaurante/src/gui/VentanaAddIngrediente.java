@@ -81,7 +81,7 @@ public class VentanaAddIngrediente extends JFrame implements ActionListener{
 		comboBox.setBounds(189, 119, 53, 28);
 		contentPane.add(comboBox);
 		
-		final VentanaIngredientes volverPrincip = new VentanaIngredientes();
+		final JIngrediente volverPrincip = new JIngrediente();
 		
 		JButton btnVolver = new JButton("Volver");		
 		btnVolver.addActionListener(new ActionListener() {

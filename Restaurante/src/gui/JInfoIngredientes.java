@@ -3,6 +3,9 @@ package gui;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import Trabajo.Administrador;
+
 import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -87,7 +90,7 @@ public class JInfoIngredientes extends JFrame implements ActionListener {
 		switch(accion) {
 		
 		case "AddIngrediente":
-			lblTitulo.setText("Añadir Ingrediente");
+			lblTitulo.setText("Aï¿½adir Ingrediente");
 			boxCantidadIngredientes.setVisible(true);
 			boxCantidadIngredientes.setToolTipText("Cantidad");
 			txtNombreIngrediente.setVisible(true);
@@ -111,7 +114,7 @@ public class JInfoIngredientes extends JFrame implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(btnVolver == e.getSource()) {
-			JIngredientes JI = new JIngredientes();
+			JIngrediente JI = new JIngrediente();
 			JI.setVisible(true);
 		}
 		
@@ -123,18 +126,18 @@ public class JInfoIngredientes extends JFrame implements ActionListener {
 				String nIngrediente = txtNombreIngrediente.getText();
 				int cIng = (int) boxCantidadIngredientes.getModel().getSelectedItem();
 				administrador.AddIngrediente(nIngrediente, cIng);
-				JOptionPane.showMessageDialog(null, "El ingrediente se ha añadido con exito");
+				JOptionPane.showMessageDialog(null, "El ingrediente se ha aï¿½adido con exito");
 				break;
 				
 			case "EliminarIngrediente":
 				String nIngrediente1 = txtNombreIngrediente.getText();
-				try{
+				/*try{
 					administrador.EliminarIngrediente(nIngrediente1);
 				}catch(EIngredienteNoExiste e1){
 					System.out.println(e1.getMessage());;
 				}catch(EListaIngredientesVacia e2) {
 					System.out.println(e2.getMessage()); 
-				}
+				}*/
 				JOptionPane.showMessageDialog(null, "El ingrediente se ha eliminado exitosamente");
 				break;
 			
