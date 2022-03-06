@@ -278,4 +278,25 @@ public class Administrador {
 			e.printStackTrace();
 		}
 	}
+	
+	class EListaIngredientesNull extends Exception{
+		public EListaIngredientesNull() {
+			super("Aún no se ha añadido ningún ingrediente");
+		}
+		
+	}
+
+	class EListaIngredientesVacia extends Exception{
+		public EListaIngredientesVacia() {
+			super("No hay ingredientes para eliminar");
+		}
+		
+	}
+
+	class EIngredienteNoExiste extends Exception{
+		public EIngredienteNoExiste() {
+			super("No se encontro un ingrediente con ese nombre");
+		}
+		
+	}
 }
