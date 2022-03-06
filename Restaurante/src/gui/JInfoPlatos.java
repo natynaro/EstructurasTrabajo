@@ -153,7 +153,7 @@ public class JInfoPlatos extends JFrame implements ActionListener{
 				administrador.borrarPlato(plato4);
 				break;
 			
-			case "AñadirPlat":
+			case "AÃ±adirPlato":
 				String plato2=txtNombrePlato.getText(); 
 				double precio2=Double.parseDouble(txtPrecio.getText());
 				//mostrar la lista de ingredientes para que seleccione y le asigne la cantidad
