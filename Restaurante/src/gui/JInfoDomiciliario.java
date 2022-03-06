@@ -35,7 +35,8 @@ public class JInfoDomiciliario extends JFrame implements ActionListener{
 	 * Create the frame.
 	 */
 	public JInfoDomiciliario(String accion) {
-		setTitle("VENTANA INFO DOMICILIARIOS");setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setTitle("VENTANA INFO DOMICILIARIOS");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.accion=accion;
 		iniciarComponentes();
 	}
@@ -94,7 +95,6 @@ public class JInfoDomiciliario extends JFrame implements ActionListener{
 		}
 	}
 
-	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(btnvolver==e.getSource()) {
 			JDomiciliario JD= new JDomiciliario();

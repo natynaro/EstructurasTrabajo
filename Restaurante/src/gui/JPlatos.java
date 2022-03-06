@@ -18,6 +18,10 @@ import java.awt.Font;
 
 public class JPlatos extends JFrame implements ActionListener{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JPanel PanelPlatos;
 	private JLabel lblNewLabel;
 	private JButton btnAñadirPlato;
