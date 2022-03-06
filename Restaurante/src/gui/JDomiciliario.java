@@ -23,7 +23,7 @@ public class JDomiciliario extends JFrame implements ActionListener{
 	private JButton btnvolver;
 	private JButton btnListaDomiciliarios;
 	private JButton btnEliminarDomiciliario;
-	private JButton btnAñadirDomiciliario;
+	private JButton btnAddDomiciliario;
 	private Administrador administrador;
 
 	/**
@@ -66,10 +66,10 @@ public class JDomiciliario extends JFrame implements ActionListener{
 		lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
 		PanelDomiciliario.add(lblTitulo);
 		
-		btnAñadirDomiciliario = new JButton("Añadir domiciliario");
-		btnAñadirDomiciliario.setBounds(26, 85, 187, 50);
-		btnAñadirDomiciliario.addActionListener(this);
-		PanelDomiciliario.add(btnAñadirDomiciliario);
+		btnAddDomiciliario = new JButton("Añadir domiciliario");
+		btnAddDomiciliario.setBounds(26, 85, 187, 50);
+		btnAddDomiciliario.addActionListener(this);
+		PanelDomiciliario.add(btnAddDomiciliario);
 		
 		btnEliminarDomiciliario = new JButton("Eliminar domiciliario");
 		btnEliminarDomiciliario.setBounds(253, 85, 164, 50);
@@ -101,7 +101,7 @@ public class JDomiciliario extends JFrame implements ActionListener{
 			JInfoDomiciliario JID= new JInfoDomiciliario("EliminarDomiciliario");
 			JID.setVisible(true);
 		}
-		if(btnAñadirDomiciliario==e.getSource()) {
+		if(btnAddDomiciliario==e.getSource()) {
 			JInfoDomiciliario JID= new JInfoDomiciliario("AñadirDomiciliario");
 			JID.setVisible(true);
 		}
