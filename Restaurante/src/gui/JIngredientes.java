@@ -15,6 +15,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
+import javax.swing.UIManager;
 
 public class JIngredientes extends JFrame implements ActionListener{
 
@@ -60,13 +61,13 @@ public class JIngredientes extends JFrame implements ActionListener{
 		
 		setBounds(100, 100, 450, 300);
 		principalIngredientes = new JPanel();
-		principalIngredientes.setBackground(Color.LIGHT_GRAY);
+		principalIngredientes.setBackground(UIManager.getColor("Button.background"));
 		principalIngredientes.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(principalIngredientes);
 		principalIngredientes.setLayout(null);
 		
 		lblTitulo = new JLabel("Ingredientes");
-		lblTitulo.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblTitulo.setFont(new Font("Lucida Grande", Font.PLAIN, 24));
 		lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTitulo.setBounds(62, 10, 316, 47);
 		principalIngredientes.add(lblTitulo);
@@ -74,7 +75,7 @@ public class JIngredientes extends JFrame implements ActionListener{
 		btnAddIngrediente = new JButton("A\u00F1adir Ingrediente");
 		
 		btnAddIngrediente.setBackground(Color.RED);
-		btnAddIngrediente.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnAddIngrediente.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
 		btnAddIngrediente.setBounds(39, 89, 141, 21);
 		btnAddIngrediente.addActionListener(this);
 		principalIngredientes.add(btnAddIngrediente);
