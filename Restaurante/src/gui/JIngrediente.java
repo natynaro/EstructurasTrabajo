@@ -80,15 +80,15 @@ public class JIngrediente extends JFrame implements ActionListener{
 		JR.setVisible(true);
 		}
 		if(btnAddIngre==e.getSource()) {
-			JInfoIngredientes JII1= new JInfoIngredientes("AddIngrediente");
+			JInfoIgrediente JII1= new JInfoIgrediente("AddIngrediente");
 			JII1.setVisible(true);
 		}
 		if(btnEliminarIngre==e.getSource()) {
-			JInfoIngredientes JII2= new JInfoIngredientes("EliminarIngrediente");
+			JInfoIgrediente JII2= new JInfoIgrediente("EliminarIngrediente");
 			JII2.setVisible(true);
 		}
 		if(btnListaIngre==e.getSource()) {
-		JInfoIngredientes JII3= new JInfoIngredientes("ListaIngredientes");
+			JInfoIgrediente JII3= new JInfoIgrediente("ListaIngredientes");
 		JII3.setVisible(true);
 	}
 		

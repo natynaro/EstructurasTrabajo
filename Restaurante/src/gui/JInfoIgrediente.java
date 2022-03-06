@@ -24,7 +24,7 @@ public class JInfoIgrediente extends JFrame implements ActionListener{
 
 	private JPanel contentPane;
 	private String accion;
-	private JPanel JInfoIngredientes;
+	private JPanel JInfoIgrediente;
 	private JTextField txtNombreIngrediente;
 	private JButton btnVolver;
 	private JButton btnAceptar;
@@ -37,11 +37,12 @@ public class JInfoIgrediente extends JFrame implements ActionListener{
 	/**
 	 * Create the frame.
 	 */
-	public JInfoIgrediente() {
+	public JInfoIgrediente(String accion) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("VENTANA PRINCIPAL INGREDIENTES");
 		setLocationRelativeTo(null);
 		iniciarComponentes();
+		this.accion=accion;
 		
 	}
 	public void iniciarComponentes() {
@@ -58,12 +59,12 @@ public class JInfoIgrediente extends JFrame implements ActionListener{
 		lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTitulo.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		lblTitulo.setBounds(196, 22, 236, 41);
-		JInfoIngredientes.add(lblTitulo);
+		contentPane.add(lblTitulo);
 		
 		txtNombreIngrediente = new JTextField();
 		txtNombreIngrediente.setVisible(false);
 		txtNombreIngrediente.setBounds(196, 74, 220, 40);
-		JInfoIngredientes.add(txtNombreIngrediente);
+		contentPane.add(txtNombreIngrediente);
 		txtNombreIngrediente.setColumns(10);
 		
 		boxCantidadIngredientes = new JComboBox();
@@ -71,21 +72,21 @@ public class JInfoIgrediente extends JFrame implements ActionListener{
 		boxCantidadIngredientes.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9"}));
 		boxCantidadIngredientes.setMaximumRowCount(9);
 		boxCantidadIngredientes.setBounds(196, 153, 53, 28);
-		JInfoIngredientes.add(boxCantidadIngredientes);
+		contentPane.add(boxCantidadIngredientes);
 		
 		btnVolver = new JButton("Volver");		
 		btnVolver.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		btnVolver.setBackground(Color.RED);
 		btnVolver.setBounds(21, 237, 89, 30);
 		btnVolver.addActionListener(this);
-		JInfoIngredientes.add(btnVolver);
+		contentPane.add(btnVolver);
 		
 		btnAceptar = new JButton("Aceptar");
 		btnAceptar.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		btnAceptar.setBackground(Color.RED);
 		btnAceptar.setBounds(275, 189, 82, 40);
 		btnAceptar.addActionListener(this);
-		JInfoIngredientes.add(btnAceptar);
+		contentPane.add(btnAceptar);
 		
 		switch(accion) {
 		
