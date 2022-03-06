@@ -6,6 +6,8 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import Trabajo.Administrador;
+import Trabajo.Administrador.EIngredienteNoExiste;
+import Trabajo.Administrador.EListaIngredientesVacia;
 
 import java.awt.Color;
 import javax.swing.JLabel;
