@@ -76,31 +76,31 @@ public class JIngredientes extends JFrame implements ActionListener{
 		
 		btnAddIngrediente.setBackground(Color.RED);
 		btnAddIngrediente.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
-		btnAddIngrediente.setBounds(39, 89, 141, 21);
+		btnAddIngrediente.setBounds(39, 89, 165, 50);
 		btnAddIngrediente.addActionListener(this);
 		principalIngredientes.add(btnAddIngrediente);
 		
 		btnListaIngredientes = new JButton("Lista de Ingredientes");
 		
 		btnListaIngredientes.setBackground(Color.RED);
-		btnListaIngredientes.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		btnListaIngredientes.setBounds(140, 147, 153, 21);
+		btnListaIngredientes.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
+		btnListaIngredientes.setBounds(140, 147, 165, 50);
 		btnListaIngredientes.addActionListener(this);
 		principalIngredientes.add(btnListaIngredientes);
 		
 		btnVolver = new JButton("Volver");
 		
-		btnVolver.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		btnVolver.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
 		btnVolver.setBackground(Color.RED);
-		btnVolver.setBounds(23, 232, 76, 21);
+		btnVolver.setBounds(23, 232, 100, 30);
 		btnVolver.addActionListener(this);
 		principalIngredientes.add(btnVolver);
 		
 		btnEliminarIngrediente = new JButton("Eliminar Ingrediente");
 		
-		btnEliminarIngrediente.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnEliminarIngrediente.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
 		btnEliminarIngrediente.setBackground(Color.RED);
-		btnEliminarIngrediente.setBounds(251, 89, 153, 21);
+		btnEliminarIngrediente.setBounds(251, 89, 165, 50);
 		btnEliminarIngrediente.addActionListener(this);
 		principalIngredientes.add(btnEliminarIngrediente);
 	
