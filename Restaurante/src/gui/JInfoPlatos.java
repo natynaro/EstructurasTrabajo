@@ -31,18 +31,21 @@ public class JInfoPlatos extends JFrame implements ActionListener{
 	private JButton btnAceptar;
 	private JButton btnVolver;
 	private Administrador administrador;
+	private JLabel IbReq1;
+	private JLabel lbReq2;
 
 	/**
 	 * Create the frame.
 	 */
 	public JInfoPlatos(String accion) {
-		setTitle("VENTANA INFO PLATOS");setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setTitle("VENTANA INFO PLATOS");
 		this.accion=accion;
 		iniciarComponentes();
+		setLocationRelativeTo(null);
 	}
 	public void iniciarComponentes() {
 
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		//setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 483, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -62,12 +65,13 @@ public class JInfoPlatos extends JFrame implements ActionListener{
 		contentPane.add(btnVolver);
 		
 		txtNombrePlato = new JTextField();
-		txtNombrePlato.setVisible(false);
-		txtNombrePlato.setBounds(200, 85, 220, 40);
+		txtNombrePlato.setToolTipText("");
+		txtNombrePlato.setBounds(200, 87, 220, 40);
 		contentPane.add(txtNombrePlato);
 		txtNombrePlato.setColumns(10);
 		
 		txtPrecio = new JTextField();
+		txtPrecio.setToolTipText("");
 		txtPrecio.setVisible(false);
 		txtPrecio.setBounds(200, 137, 220, 40);
 		contentPane.add(txtPrecio);
@@ -84,11 +88,24 @@ public class JInfoPlatos extends JFrame implements ActionListener{
 		lblTitulo.setBounds(196, 22, 236, 41);
 		contentPane.add(lblTitulo);
 		
+		IbReq1 = new JLabel("Nombre");
+		IbReq1.setFont(new Font("Lucida Grande",Font.PLAIN,14));
+		IbReq1.setBounds(134, 100, 56, 13);
+		contentPane.add(IbReq1);
+		
+		lbReq2 = new JLabel("Precio");
+		lbReq2.setFont(new Font("Lucida Grande",Font.PLAIN,14));
+		lbReq2.setBounds(145, 150, 45, 13);
+		contentPane.add(lbReq2);
+		
 		switch(accion) {
 		
 		case "ListaPlatos": 
 			lblTitulo.setText("Lista platos"); 
 			btnAceptar.setVisible(false);
+			lbReq2.setVisible(false);
+			IbReq1.setVisible(false);
+			txtNombrePlato.setVisible(false);
 			break;
 			//mostrar lista platos
 		
@@ -103,11 +120,12 @@ public class JInfoPlatos extends JFrame implements ActionListener{
 		case "EliminarPlato":
 			lblTitulo.setText("Eliminar Plato");
 			txtNombrePlato.setVisible(true);
+			lbReq2.setVisible(false);
 			txtNombrePlato.setToolTipText("Ingrese el nombre del plato");
 			break;
 		
-		case "AñadirPlat":
-			lblTitulo.setText("Añadir Plato");
+		case "AddPlato":
+			lblTitulo.setText("A�adir Plato");
 			txtNombrePlato.setVisible(true);
 			txtNombrePlato.setToolTipText("Ingrese el nombre del plato");
 			txtPrecio.setVisible(true);
@@ -131,7 +149,8 @@ public class JInfoPlatos extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		if(btnVolver==e.getSource()) {
 			JPlatos JP= new JPlatos();
-			JP.setVisible(true);	
+			JP.setVisible(true);
+			dispose();
 		}
 		
 		if(btnAceptar==e.getSource()) {
@@ -153,7 +172,7 @@ public class JInfoPlatos extends JFrame implements ActionListener{
 				administrador.borrarPlato(plato4);
 				break;
 			
-			case "AñadirPlato":
+			case "AddPlato":
 				String plato2=txtNombrePlato.getText(); 
 				double precio2=Double.parseDouble(txtPrecio.getText());
 				//mostrar la lista de ingredientes para que seleccione y le asigne la cantidad

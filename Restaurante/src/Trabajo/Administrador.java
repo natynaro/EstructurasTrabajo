@@ -4,6 +4,7 @@ import java.math.BigInteger;
 import java.util.*;
 
 import gui.JDomiciliario;
+import gui.JRestaurante;
 
 //REVISAR, que entonces elnombre se haga con to.Lowercase para que dé la búsqueda del plato
 //REVISAR EL THROW Y CAMBIARLO DE DEVOLVER-1
@@ -101,7 +102,6 @@ public class Administrador {
 		//Acá iría el método buscarDomiDisponible para poder ya crear el pedido
 		
 		Domiciliario domiciliario= buscarDomDisponible(); //borrar esto y asignarleel domiciliario disponible
-		
 		//setear la disponibilidad del domiciliario a false
 		domiciliario.setDisponibilidad(false);
 		//aumentarle el numero de pedidos
@@ -264,6 +264,15 @@ public class Administrador {
 				}
 			}else {
 				throw new EListaIngredientesVacia();
+		}
+	}
+    
+	public void presentarVentanaRestaurante() {
+		try {
+			JRestaurante frame = new JRestaurante();
+			frame.setVisible(true);
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 	

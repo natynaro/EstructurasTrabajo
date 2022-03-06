@@ -36,14 +36,15 @@ public class JInfoDomiciliario extends JFrame implements ActionListener{
 	 */
 	public JInfoDomiciliario(String accion) {
 		setTitle("VENTANA INFO DOMICILIARIOS");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		//setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.accion=accion;
 		iniciarComponentes();
+		setLocationRelativeTo(null);
 	}
 	
 	public void iniciarComponentes() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 472, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -74,7 +75,7 @@ public class JInfoDomiciliario extends JFrame implements ActionListener{
 		
 		btnAceptar = new JButton("Aceptar");
 		btnAceptar.setFont(new Font("Lucida Grande", Font.PLAIN, 16));
-		btnAceptar.setBounds(269, 180, 82, 40);
+		btnAceptar.setBounds(254, 180, 115, 40);
 		btnAceptar.addActionListener(this);
 		contentPane.add(btnAceptar);
 		
@@ -88,8 +89,8 @@ public class JInfoDomiciliario extends JFrame implements ActionListener{
 			lblTitulo.setText("Eliminar domiciliarios");
 			txtNombre.setVisible(true);
 			break;
-		case "AÃ±adirDomiciliario":
-			lblTitulo.setText("AÃ±adir domiciliarios");
+		case "AddDomiciliario":
+			lblTitulo.setText("Añadir domiciliarios");
 			txtNombre.setVisible(true);
 			break;
 		}
@@ -99,19 +100,22 @@ public class JInfoDomiciliario extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		if(btnvolver==e.getSource()) {
 			JDomiciliario JD= new JDomiciliario();
-			JD.setVisible(true);	
+			JD.setVisible(true);
+			dispose();
 		}
 		
 		if(btnAceptar==e.getSource()) {
 			switch(accion) {
 			case "ListaDomiciliarios":
-				
+				dispose();
 				break;
 				
 			case "EliminarDomiciliario":
+				dispose();
 				break;
 				
-			case "AÃ±adirDomiciliario":
+			case "AñadirDomiciliario":
+				dispose();
 				break;
 			}
 			

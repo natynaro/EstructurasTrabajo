@@ -32,8 +32,10 @@ public class JDomiciliario extends JFrame implements ActionListener{
 	 */
 	public JDomiciliario() {
 		
-		setTitle("VENTANA DOMICILIARIO");setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setTitle("VENTANA DOMICILIARIO");
+		//setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		iniciarComponentes();	
+		setLocationRelativeTo(null);
 	}
 	
 	public void iniciarComponentes() {
@@ -49,7 +51,7 @@ public class JDomiciliario extends JFrame implements ActionListener{
 		lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
 		PanelDomiciliario.add(lblTitulo);
 		
-		btnAddDomiciliario = new JButton("Añadir domiciliario");
+		btnAddDomiciliario = new JButton("A�adir domiciliario");
 		btnAddDomiciliario.setBounds(26, 85, 187, 50);
 		btnAddDomiciliario.addActionListener(this);
 		PanelDomiciliario.add(btnAddDomiciliario);
@@ -75,18 +77,22 @@ public class JDomiciliario extends JFrame implements ActionListener{
 		if(btnvolver==e.getSource()) {
 			JRestaurante JR= new JRestaurante();
 			JR.setVisible(true);
+			dispose();
 		}
 		if(btnListaDomiciliarios==e.getSource()) {
 			JInfoDomiciliario JID= new JInfoDomiciliario("ListaDomiciliarios");
 			JID.setVisible(true);
+			dispose();
 		}
 		if(btnEliminarDomiciliario==e.getSource()) {
 			JInfoDomiciliario JID= new JInfoDomiciliario("EliminarDomiciliario");
 			JID.setVisible(true);
+			dispose();
 		}
 		if(btnAddDomiciliario==e.getSource()) {
-			JInfoDomiciliario JID= new JInfoDomiciliario("AñadirDomiciliario");
+			JInfoDomiciliario JID= new JInfoDomiciliario("AddDomiciliario");
 			JID.setVisible(true);
+			dispose();
 		}
 	}
 

@@ -16,6 +16,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
 import javax.swing.UIManager;
+import java.awt.SystemColor;
 
 public class JIngredientes extends JFrame implements ActionListener{
 
@@ -32,10 +33,8 @@ public class JIngredientes extends JFrame implements ActionListener{
 	 */
 	public JIngredientes() {
 		
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		//setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		iniciarComponentes();
-		
-		
 		setTitle("VENTANA PRINCIPAL INGREDIENTES");
 		setLocationRelativeTo(null);
 		
@@ -58,7 +57,7 @@ public class JIngredientes extends JFrame implements ActionListener{
 		
 		btnAddIngrediente = new JButton("A\u00F1adir Ingrediente");
 		
-		btnAddIngrediente.setBackground(Color.RED);
+		btnAddIngrediente.setBackground(SystemColor.inactiveCaption);
 		btnAddIngrediente.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
 		btnAddIngrediente.setBounds(39, 89, 165, 50);
 		btnAddIngrediente.addActionListener(this);
@@ -66,7 +65,7 @@ public class JIngredientes extends JFrame implements ActionListener{
 		
 		btnListaIngredientes = new JButton("Lista de Ingredientes");
 		
-		btnListaIngredientes.setBackground(Color.RED);
+		btnListaIngredientes.setBackground(SystemColor.inactiveCaption);
 		btnListaIngredientes.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
 		btnListaIngredientes.setBounds(140, 147, 165, 50);
 		btnListaIngredientes.addActionListener(this);
@@ -75,7 +74,7 @@ public class JIngredientes extends JFrame implements ActionListener{
 		btnVolver = new JButton("Volver");
 		
 		btnVolver.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
-		btnVolver.setBackground(Color.RED);
+		btnVolver.setBackground(SystemColor.inactiveCaption);
 		btnVolver.setBounds(23, 232, 100, 30);
 		btnVolver.addActionListener(this);
 		principalIngredientes.add(btnVolver);
@@ -83,7 +82,7 @@ public class JIngredientes extends JFrame implements ActionListener{
 		btnEliminarIngrediente = new JButton("Eliminar Ingrediente");
 		
 		btnEliminarIngrediente.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
-		btnEliminarIngrediente.setBackground(Color.RED);
+		btnEliminarIngrediente.setBackground(SystemColor.inactiveCaption);
 		btnEliminarIngrediente.setBounds(251, 89, 165, 50);
 		btnEliminarIngrediente.addActionListener(this);
 		principalIngredientes.add(btnEliminarIngrediente);
@@ -93,20 +92,24 @@ public class JIngredientes extends JFrame implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(btnVolver==e.getSource()) {
-			//JRestaurante JR= new JRestaurante();
-			//JR.setVisible(true);
+			JRestaurante JR= new JRestaurante();
+			JR.setVisible(true);
+			dispose();
 		}
 		if(btnAddIngrediente==e.getSource()) {
 			JInfoIngredientes JII1= new JInfoIngredientes("AddIngrediente");
 			JII1.setVisible(true);
+			dispose();
 		}
 		if(btnEliminarIngrediente==e.getSource()) {
 			JInfoIngredientes JII2= new JInfoIngredientes("EliminarIngrediente");
 			JII2.setVisible(true);
+			dispose();
 		}
 		if(btnListaIngredientes==e.getSource()) {
 			JInfoIngredientes JII3= new JInfoIngredientes("ListaIngredientes");
 			JII3.setVisible(true);
+			dispose();
 		}
 }
 }

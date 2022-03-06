@@ -51,12 +51,13 @@ public class JRestaurante extends JFrame implements ActionListener{
 	 * Create the frame.
 	 */
 	public JRestaurante() {
-		setTitle("VENTANA RESTAURANTE");setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setTitle("VENTANA RESTAURANTE");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		iniciarComponentes();
-		
+		setLocationRelativeTo(null);
 	}
 	public void iniciarComponentes() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		//setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBackground(SystemColor.window);
@@ -101,10 +102,12 @@ public class JRestaurante extends JFrame implements ActionListener{
 		 if(btnPlatos==e.getSource()) {
 			JPlatos JP= new JPlatos();
 			JP.setVisible(true);
+			dispose();
 		}
 		if(btnDomiciliarios==e.getSource()) {
 			JDomiciliario JD= new JDomiciliario();
 			JD.setVisible(true);
+			dispose();
 		}
 		/*if(btnPedidos==e.getSource()) {
 			JInfoDomiciliario JID= new JInfoDomiciliario("EliminarDomiciliario");
@@ -114,6 +117,7 @@ public class JRestaurante extends JFrame implements ActionListener{
 		if(btnIngredientes==e.getSource()) {
 			JIngredientes JI= new JIngredientes();
 			JI.setVisible(true);
+			dispose();
 		}
 		/*
 		if(btnContabilidad==e.getSource()) {

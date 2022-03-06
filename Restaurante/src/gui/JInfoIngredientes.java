@@ -23,6 +23,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.UIManager;
 import javax.swing.JList;
+import java.awt.SystemColor;
 
 public class JInfoIngredientes extends JFrame implements ActionListener {
 	
@@ -41,13 +42,10 @@ public class JInfoIngredientes extends JFrame implements ActionListener {
 	 */
 
 	public JInfoIngredientes(String accion) {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
+		//setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setTitle("VENTANA INFO INGREDIENTES");
 		this.accion = accion;
 		iniciarComponentes(); 
-		
-		
-		setTitle("VENTANA INFO INGREDIENTES");
 		setLocationRelativeTo(null);
 	}
 
@@ -62,7 +60,7 @@ public class JInfoIngredientes extends JFrame implements ActionListener {
 		
 		lblTitulo = new JLabel("");
 		lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
-		lblTitulo.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblTitulo.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
 		lblTitulo.setBounds(196, 22, 236, 41);
 		JInfoIngredientes.add(lblTitulo);
 		
@@ -81,14 +79,14 @@ public class JInfoIngredientes extends JFrame implements ActionListener {
 		
 		btnVolver = new JButton("Volver");		
 		btnVolver.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
-		btnVolver.setBackground(Color.RED);
+		btnVolver.setBackground(SystemColor.menu);
 		btnVolver.setBounds(21, 223, 89, 30);
 		btnVolver.addActionListener(this);
 		JInfoIngredientes.add(btnVolver);
 		
 		btnAceptar = new JButton("Aceptar");
 		btnAceptar.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
-		btnAceptar.setBackground(Color.RED);
+		btnAceptar.setBackground(SystemColor.menu);
 		btnAceptar.setBounds(261, 167, 82, 40);
 		btnAceptar.addActionListener(this);
 		JInfoIngredientes.add(btnAceptar);
@@ -100,7 +98,7 @@ public class JInfoIngredientes extends JFrame implements ActionListener {
 		switch(accion) {
 		
 		case "AddIngrediente":
-			lblTitulo.setText("Aï¿½adir Ingrediente");
+			lblTitulo.setText("Añadir Ingrediente");
 			boxCantidadIngredientes.setVisible(true);
 			boxCantidadIngredientes.setToolTipText("Cantidad");
 			txtNombreIngrediente.setVisible(true);
@@ -126,6 +124,7 @@ public class JInfoIngredientes extends JFrame implements ActionListener {
 		if(btnVolver == e.getSource()) {
 			JIngredientes JI = new JIngredientes();
 			JI.setVisible(true);
+			dispose();
 		}
 		
 		if(btnAceptar == e.getSource()) {
@@ -133,10 +132,12 @@ public class JInfoIngredientes extends JFrame implements ActionListener {
 			switch(accion) {
 			
 			case "AddIngrediente":
+				dispose();
 				String nIngrediente = txtNombreIngrediente.getText();
 				int cIng = boxCantidadIngredientes.getSelectedIndex();
 				administrador.AddIngrediente(nIngrediente, cIng);
-				JOptionPane.showMessageDialog(null, "El ingrediente se ha aï¿½adido con exito");
+				JOptionPane.showMessageDialog(null, "El ingrediente se ha añadido con exito");
+				
 				break;
 				
 			case "EliminarIngrediente":
@@ -149,6 +150,7 @@ public class JInfoIngredientes extends JFrame implements ActionListener {
 					System.out.println(e2.getMessage()); 
 				}
 				JOptionPane.showMessageDialog(null, "El ingrediente se ha eliminado exitosamente");
+				
 				break;
 			
 			case  "ListaIngredientes":

@@ -37,8 +37,9 @@ public class JPlatos extends JFrame implements ActionListener{
 	 */
 	public JPlatos() {
 		
-		setTitle("VENTANA PLATOS");setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setTitle("VENTANA PLATOS");
 		iniciarComponentes();
+		setLocationRelativeTo(null);
 		
 	}
 	public void iniciarComponentes() {
@@ -55,7 +56,7 @@ public class JPlatos extends JFrame implements ActionListener{
 		lblNewLabel.setBounds(174, 6, 78, 41);
 		PanelPlatos.add(lblNewLabel);
 		
-		btnAddPlato = new JButton("Añadir plato");
+		btnAddPlato = new JButton("A�adir plato");
 		btnAddPlato.setBounds(35, 59, 165, 50);
 		btnAddPlato.addActionListener(this);
 		PanelPlatos.add(btnAddPlato);
@@ -89,26 +90,32 @@ public class JPlatos extends JFrame implements ActionListener{
 		if(btnVolver==e.getSource()) {
 			JRestaurante JR= new JRestaurante();
 			JR.setVisible(true);
+			dispose();
 		}
 		if(btnListaPlatos==e.getSource()) {
 			JInfoPlatos JIP1= new JInfoPlatos("ListaPlatos");
 			JIP1.setVisible(true);
+			dispose();
 		}
 		if(btnModificarPPlato==e.getSource()) {
 			JInfoPlatos JIP2= new JInfoPlatos("ModificarPPlato");
 			JIP2.setVisible(true);
+			dispose();
 		}
 		if(btnModificarIPlato==e.getSource()) {
 			JInfoPlatos JIP3= new JInfoPlatos("ModificarIPlato");
 			JIP3.setVisible(true);
+			dispose();
 		}
 		if(btnEliminarPlato==e.getSource()) {
 			JInfoPlatos JIP4= new JInfoPlatos("EliminarPlato");
 			JIP4.setVisible(true);
+			dispose();
 		}
 		if(btnAddPlato==e.getSource()) {
-			JInfoPlatos JIP5= new JInfoPlatos("AñadirPlat");
+			JInfoPlatos JIP5= new JInfoPlatos("AddPlato");
 			JIP5.setVisible(true);
+			dispose();
 		}
 		
 	}
