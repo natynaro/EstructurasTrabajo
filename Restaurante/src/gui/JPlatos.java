@@ -24,7 +24,7 @@ public class JPlatos extends JFrame implements ActionListener{
 	private static final long serialVersionUID = 1L;
 	private JPanel PanelPlatos;
 	private JLabel lblNewLabel;
-	private JButton btnAñadirPlato;
+	private JButton btnAddPlato;
 	private JButton btnEliminarPlato;
 	private JButton btnModificarIPlato;
 	private JButton btnModificarPPlato;
@@ -55,10 +55,10 @@ public class JPlatos extends JFrame implements ActionListener{
 		lblNewLabel.setBounds(174, 6, 78, 41);
 		PanelPlatos.add(lblNewLabel);
 		
-		btnAñadirPlato = new JButton("Añadir plato");
-		btnAñadirPlato.setBounds(35, 59, 165, 50);
-		btnAñadirPlato.addActionListener(this);
-		PanelPlatos.add(btnAñadirPlato);
+		btnAddPlato = new JButton("Añadir plato");
+		btnAddPlato.setBounds(35, 59, 165, 50);
+		btnAddPlato.addActionListener(this);
+		PanelPlatos.add(btnAddPlato);
 		
 		btnEliminarPlato = new JButton("Eliminar plato");
 		btnEliminarPlato.setBounds(245, 59, 165, 50);
@@ -106,7 +106,7 @@ public class JPlatos extends JFrame implements ActionListener{
 			JInfoPlatos JIP4= new JInfoPlatos("EliminarPlato");
 			JIP4.setVisible(true);
 		}
-		if(btnAñadirPlato==e.getSource()) {
+		if(btnAddPlato==e.getSource()) {
 			JInfoPlatos JIP5= new JInfoPlatos("AñadirPlat");
 			JIP5.setVisible(true);
 		}
