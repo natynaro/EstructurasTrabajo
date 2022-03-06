@@ -43,7 +43,7 @@ public class JInfoPlatos extends JFrame implements ActionListener{
 	public void iniciarComponentes() {
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 483, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -52,7 +52,7 @@ public class JInfoPlatos extends JFrame implements ActionListener{
 
 		btnAceptar = new JButton("Aceptar");
 		btnAceptar.setFont(new Font("Lucida Grande", Font.PLAIN, 16));
-		btnAceptar.setBounds(275, 189, 82, 40);
+		btnAceptar.setBounds(258, 188, 99, 40);
 		btnAceptar.addActionListener(this);
 		contentPane.add(btnAceptar);
 		
