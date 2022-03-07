@@ -25,6 +25,7 @@ import java.awt.Color;
 
 public class JPedido extends JFrame implements ActionListener{
 
+	//pediidoodododo
 	private JPanel contentPane;
 	private JTextField txtNombre;
 	private JTextField txtTel;
