@@ -10,6 +10,9 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import Trabajo.Administrador;
+import Trabajo.Administrador.EListaVacia;
+import Trabajo.Administrador.ENoExiste;
+import Trabajo.Administrador.EPrecioNeg;
 
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -161,25 +164,45 @@ public class JInfoPlatos extends JFrame implements ActionListener{
 			case "ModificarPPlato":
 				String plato1=txtNombrePlato.getText(); 
 				double precio1=Double.parseDouble(txtPrecio.getText());
-				administrador.ModificarPrecioPlato(plato1, precio1);
-				break;
+				try {
+					administrador.ModificarPrecioPlato(plato1, precio1);
+					break;
+				} catch (ENoExiste | EListaVacia | EPrecioNeg e1) {
+					//Mostrar en un mensaje
+				}
+				
 			
 			case "EliminarPlato":
 				String plato4=txtNombrePlato.getText();
-				administrador.borrarPlato(plato4);
-				break;
+				try {
+					administrador.borrarPlato(plato4);
+					break;
+				} catch (ENoExiste | EListaVacia e1) {
+					//Mostrar en un mensaje
+				}
+				
 			
 			case "AddPlato":
 				String plato2=txtNombrePlato.getText(); 
 				double precio2=Double.parseDouble(txtPrecio.getText());
 				//mostrar la lista de ingredientes para que seleccione y le asigne la cantidad
-				administrador.addPlato(plato2, null, precio2);
-				break;
+				try {
+					administrador.addPlato(plato2, null, precio2);
+					break;
+				} catch (ENoExiste | EListaVacia e1) {
+					//Mostrar en un mensaje
+				}
+				
 			
 			case "ModificarIPlato":	
 				String plato3=txtNombrePlato.getText();
-				administrador.ModificarIngrePlato(plato3, null);
-				break;
+				try {
+					administrador.ModificarIngrePlato(plato3, null);
+					break;
+				} catch (EListaVacia | ENoExiste e1) {
+					//Mostrar en un mensaje
+				}
+				
 				
 			}
 			

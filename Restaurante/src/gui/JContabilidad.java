@@ -10,13 +10,15 @@
 	import javax.swing.border.EmptyBorder;
 	
 	import Trabajo.Administrador;
-	
-	import javax.swing.JLabel;
+import Trabajo.Administrador.EListaVacia;
+
+import javax.swing.JLabel;
 	import javax.swing.JOptionPane;
 	import javax.swing.JButton;
 	import javax.swing.SwingConstants;
 	import java.awt.Font;
-	import java.awt.FlowLayout;
+import java.awt.HeadlessException;
+import java.awt.FlowLayout;
 	import java.awt.event.ActionListener;
 	import java.awt.event.ActionEvent;
 	
@@ -80,10 +82,18 @@
 				dispose();
 			}
 			if (btnReporte == e.getSource()) {
-				JOptionPane.showMessageDialog(null, administrador.reporteDiario());
+				try {
+					JOptionPane.showMessageDialog(null, administrador.reporteDiario());
+				} catch (HeadlessException | EListaVacia e1) {
+					JOptionPane.showMessageDialog(null,e1.getMessage());
+				}
 			}
 			if (btnVentas == e.getSource()) {
-				JOptionPane.showMessageDialog(null, administrador.ventasDelDia());
+				try {
+					JOptionPane.showMessageDialog(null, administrador.ventasDelDia());
+				} catch (HeadlessException | EListaVacia e1) {
+					JOptionPane.showMessageDialog(null,e1.getMessage());
+				}
 			}
 		}
 

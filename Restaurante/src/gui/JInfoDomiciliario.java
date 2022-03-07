@@ -8,6 +8,8 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import Trabajo.Administrador;
+import Trabajo.Administrador.EListaVacia;
+import Trabajo.Administrador.ENoExiste;
 
 import javax.swing.JList;
 import javax.swing.JButton;
@@ -114,9 +116,14 @@ public class JInfoDomiciliario extends JFrame implements ActionListener{
 				
 			case "EliminarDomiciliario":
 				String nom=txtNombre.getText();
-				administrador.quitarDomiciliario(nom);
+				try {
+					administrador.quitarDomiciliario(nom);
+					break;
+				} catch (EListaVacia | ENoExiste e1) {
+					//imprimir el message
+				}
 				dispose();
-				break;
+				
 				
 			case "AddDomiciliario":
 				String nom2=txtNombre.getText();
@@ -126,9 +133,14 @@ public class JInfoDomiciliario extends JFrame implements ActionListener{
 				
 			case "Completado":
 				String nom3=txtNombre.getText();
-				administrador.setDisponible(nom3);
+				try {
+					administrador.setDisponible(nom3, true);
+					break;
+				} catch (ENoExiste | EListaVacia e1) {
+					//imprimir el message
+				}
 				dispose();
-				break;
+				
 			}
 			
 		}

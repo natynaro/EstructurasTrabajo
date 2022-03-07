@@ -57,52 +57,39 @@ public class Administrador {
 	
 	
 	//De acuerdo al nombre del plato, se busca este en el array de todos los platos para asignarle el nuevo precio
-	public void ModificarPrecioPlato(String plato, double precio){
-		 int i=0;
-		 while(i<platosTotal.length && !platosTotal[i].getNombre().equals(plato.toLowerCase()))i++;
-		 if(i<platosTotal.length){
-			 if(precio>=0) {
-				 platosTotal[i].setPrecio(precio);
-			 }else {
-				 //otro throw?? de que el precio es negativo y no sería posible dar un precio así
-			 }
-			 
-		 }else {//un throw? de que no se encontró un plato con este nombre
-		 }
+	public void ModificarPrecioPlato(String plato, double precio) throws ENoExiste, EListaVacia, EPrecioNeg{
+		if(precio>0) {
+			int i=buscarPlato(plato);
+			 platosTotal[i].setPrecio(precio);
+		}else throw new EPrecioNeg("Debes ingresar un número mayor a 0");
 	}
-	
+
 	//De acuerdo al nombre del plato, se busca este en el array de todos los platos para asignarle los nuevos ingredientes
-	public void ModificarIngrePlato(String plato, Ingredientes[] nuevosIngre){
-		//estoy cambiando cosas
-		int i=0;
-		while(i<platosTotal.length && !platosTotal[i].getNombre().equals(plato.toLowerCase()))i++;
-		 if(i<platosTotal.length && nuevosIngre.length!=0){
-			 platosTotal[i].setIngredientes(nuevosIngre);
-		 }else {//un throw? de que no se encontró un plato con este nombre}
-		 }
+	public void ModificarIngrePlato(String plato, Ingredientes[] nuevosIngre) throws EListaVacia, ENoExiste{
+		if(nuevosIngre.length!=0) {
+			int i=buscarPlato(plato);
+				 platosTotal[i].setIngredientes(nuevosIngre);
+		}else throw new EListaVacia("No has añadido ningún plato, añade primero un plato");
 	}
 
 	//me dan los nombres platos, entonces uso el método buscar plato para crear el array de platos y se crea el usuario que va a hacer el pedido
-	public void NuevoPedido(String[] nombresPlatos, String nombreUsu, String direccionUsu, String telefonoUsu){
+	public void NuevoPedido(String[] nombresPlatos, String nombreUsu, String direccionUsu, String telefonoUsu) throws ENoExiste, EListaVacia{
 		
 		Platos[] platosPedir= new Platos[0];
 		double totalPrecio= 0; 
 		
 		for(int i=0; i<nombresPlatos.length; i++) {
-			
 			int posicion= buscarPlato(nombresPlatos[i].toLowerCase()); 
 			platosPedir= Arrays.copyOf(platosPedir, platosPedir.length+1);
 			platosPedir[platosPedir.length-1]=platosTotal[posicion];
 			totalPrecio=totalPrecio+platosPedir[platosPedir.length-1].getPrecio();
 		}
 		
-		
 		Usuario usuario= new Usuario(nombreUsu.toLowerCase(), direccionUsu.toLowerCase(), telefonoUsu.toLowerCase());
 		
 		Domiciliario domiciliario= buscarDomDisponible(); 
-		domiciliario.setDisponibilidad(false);
+		setDisponible(domiciliario.getNombre(), false);
 		domiciliario.setNumPedidos(domiciliario.getNumPedidos()+1);
-
 		
 		Random random = new Random();
 		String codigo=new BigInteger(50, random).toString(32);
@@ -121,63 +108,72 @@ public class Administrador {
 				}
 			}
 		}
+		
 		Pedidos pedido= new Pedidos(platosPedir, codigo, totalPrecio, usuario, domiciliario);
 		pedidosTotal=Arrays.copyOf(pedidosTotal, pedidosTotal.length+1);
 		pedidosTotal[pedidosTotal.length-1]=pedido;
 		
 	}
-	
-	
+		
 	//se crea un nuevo plato con nombre, sus ingredientes y el precio
-	public void addPlato(String nombre,Ingredientes[] ingredientesTotal, double precio) {
-		if(buscarPlato(nombre.toLowerCase()) == -1) {
+	public void addPlato(String nombre,Ingredientes[] ingredientesTotal, double precio) throws ENoExiste, EListaVacia {
+	
+		if(platosTotal ==null) {
+			platosTotal = new Platos[1];
+			platosTotal[0]= new Platos(nombre.toLowerCase(),ingredientesTotal,precio);
+		}else {
 			platosTotal= Arrays.copyOf(platosTotal,platosTotal.length+1);
 			platosTotal[platosTotal.length-1]= new Platos(nombre.toLowerCase(),ingredientesTotal,precio);
-		}
+		}		
+		
 	}
 	
 	//se borra el plato de acuerdo con el nombre
-	public void borrarPlato(String nombre) {
-		if(buscarPlato(nombre.toLowerCase()) != -1) {
+	public void borrarPlato(String nombre) throws ENoExiste, EListaVacia {
+		if(platosTotal.length>0 && platosTotal!=null) {
 			int i=buscarPlato(nombre.toLowerCase());
 			int j=buscarPlato(nombre.toLowerCase())+1;
 			while(i<platosTotal.length) {
 				platosTotal[i]= platosTotal[j];
 				i++;j++;
-			}
 			platosTotal= Arrays.copyOf(platosTotal, platosTotal.length-1);
-		}
+				}
+		}else throw new EListaVacia("La lista de platos está vacía, añada primero un plato");
+		
+		
 	}
 	
-	//Deacuerdo al nombre del plato, se devuelve la posicion del Plato en caso de existir
-	public int buscarPlato(String Nombre) {
-		String n= Nombre.toLowerCase();
-		int i=0;
-		while(i<platosTotal.length && !(platosTotal[i].getNombre().equals(n))) {
-			i++;
-		}
-		if(i<platosTotal.length) {
-			return i;
-		}else {
-			return -1; //debería ser un throw, sólo que aún no s
-		}
+	//De acuerdo al nombre del plato, se devuelve la posicion del Plato en caso de existir
+	public int buscarPlato(String Nombre) throws ENoExiste, EListaVacia{
+		if(platosTotal.length>0 && platosTotal!=null) {
+			String n= Nombre.toLowerCase();
+			int i=0;
+			while(i<platosTotal.length && !(platosTotal[i].getNombre().equals(n))) {
+				i++;
+			}
+			if(i<platosTotal.length || platosTotal[0].getNombre().equals(n)) {
+				return i;
+			}else throw new ENoExiste("No existe un plato con ese nombre, inténtelo neuvamente o añada un nuevo plato");
+		}else throw new EListaVacia("La lista de platos está vacía, añada primero un plato");
+		
 	}
 	
 	//de acuerdo al nombre, se busca la posicion del domiciliario con ese nombre
-	public int buscarDomiciliario(String nombre) {
+	public int buscarDomiciliario(String nombre) throws ENoExiste, EListaVacia {
+		if(domiciliarios.length>0 && domiciliarios!=null) {
 			String n= nombre.toLowerCase();
 			int i =0;
 			while(i<domiciliarios.length && !n.equals(domiciliarios[i].getNombre().toLowerCase())) {
 				i++;
 			}
-			if(i<domiciliarios.length) {
+			if(i<domiciliarios.length || domiciliarios[0].getNombre().equals(n)) {
 				return i;
-			}else {
-				return -1;
-			}
-		}
+			}else throw new ENoExiste("No existe un domiciliario con ese nombre, intentelo nuevamente o añada domiciliario");
+		}else throw new EListaVacia("La lista de domiciliarios está vacía, añada primero un domiciliario");
+			
+	}
 	
-	//seañade un domiciliario con este nombre
+	//se añade un domiciliario con este nombre
 	public void addDomiciliario(String nombre) {
 		if(domiciliarios == null) {
 			domiciliarios = new Domiciliario[1];
@@ -189,56 +185,68 @@ public class Administrador {
 	}
 	
 	//se elimina el domiciliario con este nombre
-	public void quitarDomiciliario(String nombre) {
-		int d = buscarDomiciliario(nombre.toLowerCase());
-		if(domiciliarios!=null && domiciliarios.length>0) {
-		for(int i = d; i<domiciliarios.length;i++) {
-			domiciliarios[i]=domiciliarios[i+1];
-			}	
-		domiciliarios= Arrays.copyOf(domiciliarios, domiciliarios.length-1);
+	public void quitarDomiciliario(String nombre) throws EListaVacia, ENoExiste {
+		try {
+			int d;
+			d = buscarDomiciliario(nombre.toLowerCase());
+			if(domiciliarios!=null && domiciliarios.length>0) {
+				for(int i = d; i<domiciliarios.length;i++) {
+					domiciliarios[i]=domiciliarios[i+1];
+				}	
+			domiciliarios= Arrays.copyOf(domiciliarios, domiciliarios.length-1);
+			}else throw new EListaVacia("No hay domiciliarios para eliminar");
+		} catch (ENoExiste e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
+		
 	}
 	
 	//se busca el domiciliario disponible en el arreglo de domiciliarios
-	public Domiciliario buscarDomDisponible() {
+	public Domiciliario buscarDomDisponible() throws ENoExiste {
 		int i=0;
 		
 		while(i<domiciliarios.length && domiciliarios[i].isDisponibilidad()!=true) {
 			i++;
 		}
-		return (i<domiciliarios.length)?domiciliarios[i]:null;
+		if(domiciliarios[i].isDisponibilidad()==true) {
+			return domiciliarios[i];
+		}else  throw new ENoExiste("No hay domiciliarios disponibles, intente más tarde");
+			
 	}
 	
-	public void setDisponible(String nombre) {
+	public void setDisponible(String nombre, boolean bol) throws ENoExiste, EListaVacia {
 		int pos= buscarDomiciliario(nombre.toLowerCase());
-		domiciliarios[pos].setDisponibilidad(true);
+		domiciliarios[pos].setDisponibilidad(bol);
 	}
 	
-	//
-	public double ventasDelDia() {
+	//Me suma todas las ganancias del arreglo de pedidos actual
+	public double ventasDelDia() throws EListaVacia {
 		double v=0;
 		if(pedidosTotal!=null) {
-		for(int i=0;i<pedidosTotal.length;i++) {
-			v+=pedidosTotal[i].getTotalPrecio();
-			}
-		}
-		return v;
+			for(int i=0;i<pedidosTotal.length;i++) {
+				v+=pedidosTotal[i].getTotalPrecio();
+				}
+			return v;
+		}else throw new EListaVacia("La lista de pedidos está vacía, añada primero ingredientes");
+		
 	}
 	
-	//
-	public String reporteDiario() {
+	//Me enumera los pedidos y cuánto facturó cada uno, del arreglo de pedidos actual
+	public String reporteDiario() throws EListaVacia {
 		String a="";
-		if(pedidosTotal!=null) {
+		if(pedidosTotal!=null|| pedidosTotal.length>0) {
 			for(int i=0;i<pedidosTotal.length;i++) {
 				a+="El pedido "+ (i+1) + "se factur� por un total de: "+pedidosTotal[i].getTotalPrecio() + "\n";
 			}
-		}
-		return a;
+			return a;
+		}else throw new EListaVacia("La lista de pedidos está vacía, añada primero ingredientes"); 
+		
 	}
 
 	//
 	public void AddIngrediente(String nombre, int cantidad) {
-		if(ingredientesTotal == null) {
+		if(ingredientesTotal == null || ingredientesTotal.length<1) {
 			ingredientesTotal = new Ingredientes[1];
 			ingredientesTotal[0] = new Ingredientes(nombre.toLowerCase(),cantidad);
 		}else {
@@ -247,7 +255,8 @@ public class Administrador {
 		}
 	}
 	
-	public void EliminarIngrediente(String nombre) throws EListaIngredientesVacia, EIngredienteNoExiste {
+	//
+	public void EliminarIngrediente(String nombre) throws EListaVacia, ENoExiste {
 		boolean seEncontroElIngrediente = false;
 		if(ingredientesTotal != null && ingredientesTotal.length > 0) {
 			for(int i = 0; i<ingredientesTotal.length; i++) {
@@ -260,10 +269,10 @@ public class Administrador {
 					}
 				}
 				if(seEncontroElIngrediente == false) {
-					throw new EIngredienteNoExiste();
+					throw new ENoExiste("No se encontró un ingrediente con ese nombre, inténtelo de nuevo con un nuevo nombre o añada un ingrediente con este nombre");
 				}
 			}else {
-				throw new EListaIngredientesVacia();
+				throw new EListaVacia("La lista de ingredientes está vacía, añada primero ingredientes");
 		}
 	}
     
@@ -279,25 +288,25 @@ public class Administrador {
 	
 //EXCEPCIONES
 	
-	public class EListaIngredientesNull extends Exception{
-		public EListaIngredientesNull() {
-			super("A�n no se ha a�adido ning�n ingrediente");
+	public class EListaVacia extends Exception{
+		public EListaVacia(String mensaje) {
+			super(mensaje);
 		}
-		
 	}
-
-	public class EListaIngredientesVacia extends Exception{
-		public EListaIngredientesVacia() {
-			super("No hay ingredientes para eliminar");
+	
+	public class ENoExiste extends Exception{
+		public ENoExiste(String mensaje) {
+			super(mensaje);
 		}
-		
 	}
-
-	public class EIngredienteNoExiste extends Exception{
-
-		public EIngredienteNoExiste() {
-			super("No se encontró un ingrediente con ese nombre");
+	
+	public class EPrecioNeg extends Exception{
+		public EPrecioNeg(String mensaje) {
+			super(mensaje);
 		}
-		
 	}
+	
+
+	
+
 }

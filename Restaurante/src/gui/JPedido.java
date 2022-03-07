@@ -9,6 +9,8 @@ import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 
 import Trabajo.*;
+import Trabajo.Administrador.EListaVacia;
+import Trabajo.Administrador.ENoExiste;
 
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -159,7 +161,11 @@ public class JPedido extends JFrame implements ActionListener{
 			String nombU= txtNombre.getText();
 			String telU= txtTel.getText();
 			String dirU=txtDirec.getText();
-			admin.NuevoPedido(platosTotal, nombU, dirU, telU);
+			try {
+				admin.NuevoPedido(platosTotal, nombU, dirU, telU);
+			} catch (ENoExiste | EListaVacia e1) {
+				//imprimir el message
+			}
 		}
 		
 	}

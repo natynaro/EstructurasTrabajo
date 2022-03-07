@@ -6,8 +6,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import Trabajo.Administrador;
-import Trabajo.Administrador.EIngredienteNoExiste;
-import Trabajo.Administrador.EListaIngredientesVacia;
+import Trabajo.Administrador.*;
 
 import java.awt.Color;
 import javax.swing.JLabel;
@@ -139,14 +138,15 @@ public class JInfoIngredientes extends JFrame implements ActionListener {
 				String nIngrediente1 = txtNombreIngrediente.getText();
 				try{
 					administrador.EliminarIngrediente(nIngrediente1);
-				}catch(EIngredienteNoExiste e1){
+					break;
+				}catch(ENoExiste e1){
 					System.out.println(e1.getMessage());;
-				}catch(EListaIngredientesVacia e2) {
+				}catch(EListaVacia e2) {
 					System.out.println(e2.getMessage()); 
 				}
 				JOptionPane.showMessageDialog(null, "El ingrediente se ha eliminado exitosamente");
 				
-				break;
+				
 			
 			case  "ListaIngredientes":
 				//Mostrar lista ingredientes
