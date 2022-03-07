@@ -36,11 +36,6 @@ public class JInfoIngredientes extends JFrame implements ActionListener {
 	private JComboBox boxCantidadIngredientes;
 	private Administrador administrador;
 
-
-	/**
-	 * Create the frame.
-	 */
-
 	public JInfoIngredientes(String accion) {
 		//setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("VENTANA INFO INGREDIENTES");
@@ -98,7 +93,7 @@ public class JInfoIngredientes extends JFrame implements ActionListener {
 		switch(accion) {
 		
 		case "AddIngrediente":
-			lblTitulo.setText("Añadir Ingrediente");
+			lblTitulo.setText("Aï¿½adir Ingrediente");
 			boxCantidadIngredientes.setVisible(true);
 			boxCantidadIngredientes.setToolTipText("Cantidad");
 			txtNombreIngrediente.setVisible(true);
@@ -136,7 +131,7 @@ public class JInfoIngredientes extends JFrame implements ActionListener {
 				String nIngrediente = txtNombreIngrediente.getText();
 				int cIng = boxCantidadIngredientes.getSelectedIndex();
 				administrador.AddIngrediente(nIngrediente, cIng);
-				JOptionPane.showMessageDialog(null, "El ingrediente se ha añadido con exito");
+				JOptionPane.showMessageDialog(null, "El ingrediente se ha aï¿½adido con exito");
 				
 				break;
 				

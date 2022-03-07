@@ -34,17 +34,14 @@ public class JInfoPlatos extends JFrame implements ActionListener{
 	private JLabel IbReq1;
 	private JLabel lbReq2;
 
-	/**
-	 * Create the frame.
-	 */
 	public JInfoPlatos(String accion) {
 		setTitle("VENTANA INFO PLATOS");
 		this.accion=accion;
 		iniciarComponentes();
 		setLocationRelativeTo(null);
 	}
+	
 	public void iniciarComponentes() {
-
 		//setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 483, 300);
 		contentPane = new JPanel();
@@ -125,7 +122,7 @@ public class JInfoPlatos extends JFrame implements ActionListener{
 			break;
 		
 		case "AddPlato":
-			lblTitulo.setText("Añadir Plato");
+			lblTitulo.setText("Aï¿½adir Plato");
 			txtNombrePlato.setVisible(true);
 			txtNombrePlato.setToolTipText("Ingrese el nombre del plato");
 			txtPrecio.setVisible(true);

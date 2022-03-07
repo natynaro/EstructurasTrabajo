@@ -28,11 +28,7 @@ public class JIngredientes extends JFrame implements ActionListener{
 	private JLabel lblTitulo;
 	private Administrador administrador;
 
-	/**
-	 * Create the frame.
-	 */
 	public JIngredientes() {
-		
 		//setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		iniciarComponentes();
 		setTitle("VENTANA PRINCIPAL INGREDIENTES");
@@ -41,7 +37,6 @@ public class JIngredientes extends JFrame implements ActionListener{
 	}
 
 	private void iniciarComponentes() {
-		
 		setBounds(100, 100, 450, 300);
 		principalIngredientes = new JPanel();
 		principalIngredientes.setBackground(UIManager.getColor("Button.background"));

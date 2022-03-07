@@ -31,9 +31,6 @@ public class JInfoDomiciliario extends JFrame implements ActionListener{
 	private String accion;
 
 
-	/**
-	 * Create the frame.
-	 */
 	public JInfoDomiciliario(String accion) {
 		setTitle("VENTANA INFO DOMICILIARIOS");
 		//setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -52,7 +49,7 @@ public class JInfoDomiciliario extends JFrame implements ActionListener{
 		
 		list = new JList();
 		list.setVisible(false);
-		list.setBounds(17, 28, 152, 192);
+		list.setBounds(17, 28, 167, 192);
 		contentPane.add(list);
 		
 		btnvolver = new JButton("volver");
@@ -63,19 +60,19 @@ public class JInfoDomiciliario extends JFrame implements ActionListener{
 		lblTitulo = new JLabel("");
 		lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTitulo.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
-		lblTitulo.setBounds(181, 50, 246, 41);
+		lblTitulo.setBounds(204, 50, 246, 41);
 		contentPane.add(lblTitulo);
 		
 		txtNombre = new JTextField();
 		txtNombre.setVisible(false);
 		txtNombre.setToolTipText("Ingrese el nombre del domiciliario");
-		txtNombre.setBounds(204, 103, 210, 50);
+		txtNombre.setBounds(226, 105, 210, 50);
 		contentPane.add(txtNombre);
 		txtNombre.setColumns(10);
 		
 		btnAceptar = new JButton("Aceptar");
 		btnAceptar.setFont(new Font("Lucida Grande", Font.PLAIN, 16));
-		btnAceptar.setBounds(254, 180, 115, 40);
+		btnAceptar.setBounds(262, 180, 115, 40);
 		btnAceptar.addActionListener(this);
 		contentPane.add(btnAceptar);
 		
@@ -90,13 +87,17 @@ public class JInfoDomiciliario extends JFrame implements ActionListener{
 			txtNombre.setVisible(true);
 			break;
 		case "AddDomiciliario":
-			lblTitulo.setText("Añadir domiciliarios");
+			lblTitulo.setText("Aï¿½adir domiciliarios");
 			txtNombre.setVisible(true);
 			break;
+		case "Completado":
+			dispose();
+			break;
 		}
+		
 	}
 
-	@Override
+
 	public void actionPerformed(ActionEvent e) {
 		if(btnvolver==e.getSource()) {
 			JDomiciliario JD= new JDomiciliario();
@@ -107,14 +108,25 @@ public class JInfoDomiciliario extends JFrame implements ActionListener{
 		if(btnAceptar==e.getSource()) {
 			switch(accion) {
 			case "ListaDomiciliarios":
+				//mostrar la lista
 				dispose();
 				break;
 				
 			case "EliminarDomiciliario":
+				String nom=txtNombre.getText();
+				administrador.quitarDomiciliario(nom);
 				dispose();
 				break;
 				
-			case "AñadirDomiciliario":
+			case "AddDomiciliario":
+				String nom2=txtNombre.getText();
+				administrador.addDomiciliario(nom2);
+				dispose();
+				break;
+				
+			case "Completado":
+				String nom3=txtNombre.getText();
+				administrador.setDisponible(nom3);
 				dispose();
 				break;
 			}

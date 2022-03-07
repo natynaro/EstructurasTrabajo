@@ -27,12 +27,7 @@ public class JDomiciliario extends JFrame implements ActionListener{
 	private Administrador administrador;
 	private JButton btnCompletado;
 
-	
-	/**
-	 * Create the frame.
-	 */
 	public JDomiciliario() {
-		
 		setTitle("VENTANA DOMICILIARIO");
 		//setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		iniciarComponentes();	
@@ -52,7 +47,7 @@ public class JDomiciliario extends JFrame implements ActionListener{
 		lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
 		PanelDomiciliario.add(lblTitulo);
 		
-		btnAddDomiciliario = new JButton("A�adir domiciliario");
+		btnAddDomiciliario = new JButton("Anadir domiciliario");
 		btnAddDomiciliario.setBounds(26, 85, 187, 50);
 		btnAddDomiciliario.addActionListener(this);
 		PanelDomiciliario.add(btnAddDomiciliario);
@@ -74,6 +69,7 @@ public class JDomiciliario extends JFrame implements ActionListener{
 		
 		btnCompletado = new JButton("Domicilio Completado");
 		btnCompletado.setBounds(253, 158, 164, 50);
+		btnCompletado.addActionListener(this);
 		PanelDomiciliario.add(btnCompletado);
 	}
 
@@ -99,6 +95,12 @@ public class JDomiciliario extends JFrame implements ActionListener{
 			JID.setVisible(true);
 			dispose();
 		}
+		if(btnCompletado==e.getSource()) {
+			JInfoDomiciliario JID= new JInfoDomiciliario("Completado");
+			JID.setVisible(true);
+			dispose();
+		}
+		
 	}
 
 }

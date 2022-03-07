@@ -5,6 +5,7 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 
 import Trabajo.*;
@@ -43,15 +44,13 @@ public class JPedido extends JFrame implements ActionListener{
 	private Administrador admin;
 	private String[] platosTotal= new String[0];
 	
-	/**
-	 * Create the frame.
-	 */
 	public JPedido() {
 		setTitle("VENTANA NUEVO PEDIDO");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		//setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
 		iniciarComponentes();
 	}
+	
 	public void iniciarComponentes(){
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -63,12 +62,12 @@ public class JPedido extends JFrame implements ActionListener{
 		lblNuevoPedido = new JLabel("Nuevo Pedido");
 		lblNuevoPedido.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNuevoPedido.setFont(new Font("Lucida Grande", Font.PLAIN, 24));
-		lblNuevoPedido.setBounds(6, 6, 440, 29);
+		lblNuevoPedido.setBounds(10, 16, 440, 29);
 		contentPane.add(lblNuevoPedido);
 		
 		lblTituloUsuario = new JLabel("Datos Usuario");
 		lblTituloUsuario.setFont(new Font("Lucida Grande", Font.PLAIN, 16));
-		lblTituloUsuario.setBounds(16, 37, 160, 29);
+		lblTituloUsuario.setBounds(20, 44, 160, 29);
 		contentPane.add(lblTituloUsuario);
 		
 		lblNomb = new JLabel("Nombre");

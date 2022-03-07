@@ -29,11 +29,6 @@ public class JRestaurante extends JFrame implements ActionListener{
 	private JButton btnContabilidad;
 	private Administrador administrador;
 	
-	
-
-	/**
-	 * Launch the application.
-	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -47,9 +42,6 @@ public class JRestaurante extends JFrame implements ActionListener{
 		});
 	}
 
-	/**
-	 * Create the frame.
-	 */
 	public JRestaurante() {
 		setTitle("VENTANA RESTAURANTE");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -109,21 +101,21 @@ public class JRestaurante extends JFrame implements ActionListener{
 			JD.setVisible(true);
 			dispose();
 		}
-		/*if(btnPedidos==e.getSource()) {
-			JInfoDomiciliario JID= new JInfoDomiciliario("EliminarDomiciliario");
-			JID.setVisible(true);
-		}*/
+		if(btnPedidos==e.getSource()) {
+			JPedido JP= new JPedido();
+			JP.setVisible(true);
+		}
 		
 		if(btnIngredientes==e.getSource()) {
 			JIngredientes JI= new JIngredientes();
 			JI.setVisible(true);
 			dispose();
 		}
-		/*
+		
 		if(btnContabilidad==e.getSource()) {
-			VentanaIngredientes JI= new VentanaIngredientes();
-			JI.setVisible(true);
-			}*/
+			JContabilidad JC= new JContabilidad();
+			JC.setVisible(true);
+			}
 		
 	}
 }

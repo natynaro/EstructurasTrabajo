@@ -18,9 +18,6 @@ import java.awt.Font;
 
 public class JPlatos extends JFrame implements ActionListener{
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel PanelPlatos;
 	private JLabel lblNewLabel;
@@ -32,16 +29,12 @@ public class JPlatos extends JFrame implements ActionListener{
 	private JButton btnVolver;
 	private Administrador administrador;
 
-	/**
-	 * Create the frame.
-	 */
 	public JPlatos() {
-		
 		setTitle("VENTANA PLATOS");
 		iniciarComponentes();
-		setLocationRelativeTo(null);
-		
+		setLocationRelativeTo(null);	
 	}
+	
 	public void iniciarComponentes() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -56,7 +49,7 @@ public class JPlatos extends JFrame implements ActionListener{
 		lblNewLabel.setBounds(174, 6, 78, 41);
 		PanelPlatos.add(lblNewLabel);
 		
-		btnAddPlato = new JButton("Añadir plato");
+		btnAddPlato = new JButton("Aï¿½adir plato");
 		btnAddPlato.setBounds(35, 59, 165, 50);
 		btnAddPlato.addActionListener(this);
 		PanelPlatos.add(btnAddPlato);
