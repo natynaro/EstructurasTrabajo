@@ -168,7 +168,7 @@ public class JInfoPlatos extends JFrame implements ActionListener{
 					administrador.ModificarPrecioPlato(plato1, precio1);
 					break;
 				} catch (ENoExiste | EListaVacia | EPrecioNeg e1) {
-					//Mostrar en un mensaje
+					JOptionPane.showMessageDialog(null,e1.getMessage()); 
 				}
 				
 			
@@ -178,7 +178,7 @@ public class JInfoPlatos extends JFrame implements ActionListener{
 					administrador.borrarPlato(plato4);
 					break;
 				} catch (ENoExiste | EListaVacia e1) {
-					//Mostrar en un mensaje
+					JOptionPane.showMessageDialog(null,e1.getMessage()); 
 				}
 				
 			
@@ -190,7 +190,7 @@ public class JInfoPlatos extends JFrame implements ActionListener{
 					administrador.addPlato(plato2, null, precio2);
 					break;
 				} catch (ENoExiste | EListaVacia e1) {
-					//Mostrar en un mensaje
+					JOptionPane.showMessageDialog(null,e1.getMessage()); 
 				}
 				
 			
@@ -198,15 +198,16 @@ public class JInfoPlatos extends JFrame implements ActionListener{
 				String plato3=txtNombrePlato.getText();
 				try {
 					administrador.ModificarIngrePlato(plato3, null);
+					JOptionPane.showMessageDialog(null, "La información fue guardada con éxito");
 					break;
 				} catch (EListaVacia | ENoExiste e1) {
-					//Mostrar en un mensaje
+					JOptionPane.showMessageDialog(null,e1.getMessage()); 
 				}
 				
 				
 			}
 			
-			JOptionPane.showMessageDialog(null, "La información fue guardada con éxito");
+			
 		}
 		
 	}
