@@ -247,7 +247,6 @@ public class Administrador {
 		}
 	}
 	
-	//
 	public void EliminarIngrediente(String nombre) throws EListaIngredientesVacia, EIngredienteNoExiste {
 		boolean seEncontroElIngrediente = false;
 		if(ingredientesTotal != null && ingredientesTotal.length > 0) {
@@ -297,7 +296,7 @@ public class Administrador {
 	public class EIngredienteNoExiste extends Exception{
 
 		public EIngredienteNoExiste() {
-			super("No se encontro un ingrediente con ese nombre");
+			super("No se encontró un ingrediente con ese nombre");
 		}
 		
 	}
