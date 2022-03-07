@@ -25,6 +25,7 @@ public class JDomiciliario extends JFrame implements ActionListener{
 	private JButton btnEliminarDomiciliario;
 	private JButton btnAddDomiciliario;
 	private Administrador administrador;
+	private JButton btnCompletado;
 
 	
 	/**
@@ -51,7 +52,7 @@ public class JDomiciliario extends JFrame implements ActionListener{
 		lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
 		PanelDomiciliario.add(lblTitulo);
 		
-		btnAddDomiciliario = new JButton("Añadir domiciliario");
+		btnAddDomiciliario = new JButton("Aï¿½adir domiciliario");
 		btnAddDomiciliario.setBounds(26, 85, 187, 50);
 		btnAddDomiciliario.addActionListener(this);
 		PanelDomiciliario.add(btnAddDomiciliario);
@@ -62,7 +63,7 @@ public class JDomiciliario extends JFrame implements ActionListener{
 		PanelDomiciliario.add(btnEliminarDomiciliario);
 		
 		btnListaDomiciliarios = new JButton("Mostrar lista domiciliario");
-		btnListaDomiciliarios.setBounds(130, 157, 202, 50);
+		btnListaDomiciliarios.setBounds(26, 158, 202, 50);
 		btnListaDomiciliarios.addActionListener(this);
 		PanelDomiciliario.add(btnListaDomiciliarios);
 		
@@ -70,6 +71,10 @@ public class JDomiciliario extends JFrame implements ActionListener{
 		btnvolver.setBounds(5, 238, 100, 30);
 		btnvolver.addActionListener(this);
 		PanelDomiciliario.add(btnvolver);
+		
+		btnCompletado = new JButton("Domicilio Completado");
+		btnCompletado.setBounds(253, 158, 164, 50);
+		PanelDomiciliario.add(btnCompletado);
 	}
 
 	

@@ -6,14 +6,19 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import Trabajo.*;
+
 import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Arrays;
 
 import javax.swing.SwingConstants;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import java.awt.Color;
 
@@ -35,10 +40,9 @@ public class JPedido extends JFrame implements ActionListener{
 	private JButton btnVolver;
 	private JButton btnAddOtroPlato;
 	private JButton btnConfirmarPedido;
+	private Administrador admin;
+	private String[] platosTotal= new String[0];
 	
-	
-	
-
 	/**
 	 * Create the frame.
 	 */
@@ -100,6 +104,7 @@ public class JPedido extends JFrame implements ActionListener{
 		contentPane.add(lblPlatos);
 		
 		cbxPlatos = new JComboBox();
+		cbxPlatos.setModel(new DefaultComboBoxModel(new String[] {"Plato"}));
 		cbxPlatos.setBounds(26, 195, 222, 29);
 		contentPane.add(cbxPlatos);
 		
@@ -109,6 +114,8 @@ public class JPedido extends JFrame implements ActionListener{
 		contentPane.add(lblCantidad);
 		
 		cbxCantidad = new JComboBox();
+		cbxCantidad.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5"}));
+		cbxCantidad.setMaximumRowCount(5);
 		cbxCantidad.setBounds(283, 195, 80, 29);
 		contentPane.add(cbxCantidad);
 		
@@ -134,16 +141,25 @@ public class JPedido extends JFrame implements ActionListener{
 		contentPane.add(btnConfirmarPedido);
 	}
 
+	//String[] nombresPlatos, String nombreUsu, String direccionUsu, String telefonoUsu
 	public void actionPerformed(ActionEvent e) {
 		if(btnVolver==e.getSource()) {
 			JRestaurante JR= new JRestaurante();
 			JR.setVisible(true);
 			dispose();
 		}if(btnAddOtroPlato==e.getSource()) {
+			int numPlato= cbxCantidad.getSelectedIndex();
+			String nombPlato= (String) cbxPlatos.getSelectedItem();
+			platosTotal= Arrays.copyOf(platosTotal, platosTotal.length+1);
+			platosTotal[platosTotal.length-1]=nombPlato;
 			
 			
 		}if(btnConfirmarPedido==e.getSource()) {
-			
+			platosTotal= Arrays.copyOf(platosTotal,platosTotal.length+1);
+			String nombU= txtNombre.getText();
+			String telU= txtTel.getText();
+			String dirU=txtDirec.getText();
+			admin.NuevoPedido(platosTotal, nombU, dirU, telU);
 		}
 		
 	}
