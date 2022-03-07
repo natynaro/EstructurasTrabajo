@@ -13,6 +13,8 @@ import Trabajo.Administrador.EListaVacia;
 import Trabajo.Administrador.ENoExiste;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -164,7 +166,7 @@ public class JPedido extends JFrame implements ActionListener{
 			try {
 				admin.NuevoPedido(platosTotal, nombU, dirU, telU);
 			} catch (ENoExiste | EListaVacia e1) {
-				//imprimir el message
+				JOptionPane.showMessageDialog(null, e1.getMessage()); 
 			}
 		}
 		

@@ -12,6 +12,7 @@ import Trabajo.Administrador.EListaVacia;
 import Trabajo.Administrador.ENoExiste;
 
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -120,7 +121,7 @@ public class JInfoDomiciliario extends JFrame implements ActionListener{
 					administrador.quitarDomiciliario(nom);
 					break;
 				} catch (EListaVacia | ENoExiste e1) {
-					//imprimir el message
+					JOptionPane.showMessageDialog(null,e1.getMessage()); 
 				}
 				dispose();
 				
@@ -137,7 +138,7 @@ public class JInfoDomiciliario extends JFrame implements ActionListener{
 					administrador.setDisponible(nom3, true);
 					break;
 				} catch (ENoExiste | EListaVacia e1) {
-					//imprimir el message
+					JOptionPane.showMessageDialog(null, e1.getMessage()); 
 				}
 				dispose();
 				
