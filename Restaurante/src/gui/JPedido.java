@@ -50,12 +50,11 @@ public class JPedido extends JFrame implements ActionListener{
 	public JPedido() {
 		setTitle("VENTANA NUEVO PEDIDO");
 		//setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setLocationRelativeTo(null);
 		iniciarComponentes();
+		setLocationRelativeTo(null);
 	}
 	
 	public void iniciarComponentes(){
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -128,7 +127,7 @@ public class JPedido extends JFrame implements ActionListener{
 		btnVolver.addActionListener(this);
 		contentPane.add(btnVolver);
 		
-		btnAddOtroPlato = new JButton("AÃ±adir otro Plato");
+		btnAddOtroPlato = new JButton("Añadir otro Plato");
 		btnAddOtroPlato.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
 		btnAddOtroPlato.setBackground(Color.WHITE);
 		btnAddOtroPlato.setBounds(107, 236, 150, 30);

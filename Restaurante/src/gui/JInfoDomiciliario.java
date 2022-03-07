@@ -20,6 +20,8 @@ import java.awt.event.ActionListener;
 
 import javax.swing.SwingConstants;
 import javax.swing.JTextField;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
 
 public class JInfoDomiciliario extends JFrame implements ActionListener{
 
@@ -68,15 +70,22 @@ public class JInfoDomiciliario extends JFrame implements ActionListener{
 		txtNombre = new JTextField();
 		txtNombre.setVisible(false);
 		txtNombre.setToolTipText("Ingrese el nombre del domiciliario");
-		txtNombre.setBounds(226, 105, 210, 50);
+		txtNombre.setBounds(224, 81, 210, 50);
 		contentPane.add(txtNombre);
 		txtNombre.setColumns(10);
 		
 		btnAceptar = new JButton("Aceptar");
 		btnAceptar.setFont(new Font("Lucida Grande", Font.PLAIN, 16));
-		btnAceptar.setBounds(262, 180, 115, 40);
+		btnAceptar.setBounds(262, 199, 115, 40);
 		btnAceptar.addActionListener(this);
 		contentPane.add(btnAceptar);
+		
+		JComboBox comboBox = new JComboBox();
+		comboBox.setFont(new Font("Lucida Grande", Font.PLAIN, 14));
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Disponible", "No Disponible"}));
+		comboBox.setBounds(263, 156, 96, 21);
+		comboBox.setVisible(false);
+		contentPane.add(comboBox);
 		
 		switch(accion) {
 		case "ListaDomiciliarios":
@@ -89,10 +98,13 @@ public class JInfoDomiciliario extends JFrame implements ActionListener{
 			txtNombre.setVisible(true);
 			break;
 		case "AddDomiciliario":
-			lblTitulo.setText("Aï¿½adir domiciliarios");
+			lblTitulo.setText("Añadir domiciliarios");
 			txtNombre.setVisible(true);
 			break;
 		case "Completado":
+			lblTitulo.setText("Disponibilidad");
+			comboBox.setVisible(true);
+			txtNombre.setVisible(true);
 			dispose();
 			break;
 		}
@@ -145,5 +157,4 @@ public class JInfoDomiciliario extends JFrame implements ActionListener{
 			
 		}
 	}
-
 }

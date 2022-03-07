@@ -92,7 +92,7 @@ public class JInfoIngredientes extends JFrame implements ActionListener {
 		switch(accion) {
 		
 		case "AddIngrediente":
-			lblTitulo.setText("Aï¿½adir Ingrediente");
+			lblTitulo.setText("Añadir Ingrediente");
 			boxCantidadIngredientes.setVisible(true);
 			boxCantidadIngredientes.setToolTipText("Cantidad");
 			txtNombreIngrediente.setVisible(true);
@@ -130,7 +130,7 @@ public class JInfoIngredientes extends JFrame implements ActionListener {
 				String nIngrediente = txtNombreIngrediente.getText();
 				int cIng = boxCantidadIngredientes.getSelectedIndex();
 				administrador.AddIngrediente(nIngrediente, cIng);
-				JOptionPane.showMessageDialog(null, "El ingrediente se ha aï¿½adido con exito");
+				JOptionPane.showMessageDialog(null, "El ingrediente se ha añadido con exito");
 				
 				break;
 				
