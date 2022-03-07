@@ -130,7 +130,11 @@ public class JInfoIngredientes extends JFrame implements ActionListener {
 				String nIngrediente = txtNombreIngrediente.getText();
 				int cIng = boxCantidadIngredientes.getSelectedIndex();
 				administrador.AddIngrediente(nIngrediente, cIng);
+<<<<<<< HEAD
 				JOptionPane.showMessageDialog(null, "El ingrediente se ha añadido con exito");
+=======
+				JOptionPane.showMessageDialog(null, "El ingrediente se ha aÃ±adido con exito");
+>>>>>>> 12321c345fe643fb276ad971c97b50af11e65b0d
 				
 				break;
 				
@@ -140,13 +144,11 @@ public class JInfoIngredientes extends JFrame implements ActionListener {
 					administrador.EliminarIngrediente(nIngrediente1);
 					break;
 				}catch(ENoExiste e1){
-					System.out.println(e1.getMessage());;
+					JOptionPane.showMessageDialog(null,e1.getMessage()); 
 				}catch(EListaVacia e2) {
-					System.out.println(e2.getMessage()); 
+					JOptionPane.showMessageDialog(null,e2.getMessage()); 
 				}
-				JOptionPane.showMessageDialog(null, "El ingrediente se ha eliminado exitosamente");
-				
-				
+			
 			
 			case  "ListaIngredientes":
 				//Mostrar lista ingredientes
