@@ -81,7 +81,7 @@ public class JRestaurante extends JFrame implements ActionListener{
 		btnDomiciliarios.addActionListener(this);
 		contentPane.add(btnDomiciliarios);
 		
-		btnPedidos = new JButton("Pedidos");
+		btnPedidos = new JButton("Nuevo Pedido");
 		btnPedidos.setBounds(31, 63, 164, 50);
 		btnPedidos.addActionListener(this);
 		contentPane.add(btnPedidos);

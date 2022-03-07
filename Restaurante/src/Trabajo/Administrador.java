@@ -276,7 +276,7 @@ public class Administrador {
 		}
 	}
 	
-//EXCEPCIONES
+//EXCEPCIONESs
 	
 	public class EListaIngredientesNull extends Exception{
 		public EListaIngredientesNull() {
