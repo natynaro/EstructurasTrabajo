@@ -85,7 +85,7 @@ import java.awt.FlowLayout;
 			if (btnReporte == e.getSource()) {
 				try {
 					if(administrador.getPedidosTotal()!=null) {
-						JOptionPane.showMessageDialog(null, administrador.reportePedidos());
+						JOptionPane.showMessageDialog(null, administrador.reporteDiario());
 					}else {JOptionPane.showMessageDialog(null, "Aún no se han realizado ventas en el día");}
 					
 				} catch (HeadlessException | EListaVacia e1) {
@@ -94,7 +94,7 @@ import java.awt.FlowLayout;
 			}
 			if (btnVentas == e.getSource()) {
 				try {
-					JOptionPane.showMessageDialog(null, "El total facturado fue: "+administrador.ventasTotal());
+					JOptionPane.showMessageDialog(null, administrador.ventasDelDia());
 				} catch (HeadlessException | EListaVacia e1) {
 					JOptionPane.showMessageDialog(null,e1.getMessage());
 				}
