@@ -37,7 +37,7 @@ import java.awt.FlowLayout;
 			setTitle("VENTANA CONTABILIDAD");
 			//setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			Administrador administrador=new Administrador();
-			setSize(500, 450);
+			setSize(450, 300);
 			setLocationRelativeTo(null);
 			scrollVentana = new JScrollPane();
 			inicializarComponentes();
@@ -53,25 +53,28 @@ import java.awt.FlowLayout;
 			
 			lblTitulo = new JLabel("Contabilidad");
 			lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
-			lblTitulo.setFont(new Font("Dialog", Font.PLAIN, 40));
-			lblTitulo.setBounds(77, 10, 226, 52);
+			lblTitulo.setFont(new Font("Lucida Grande", Font.PLAIN, 24));
+			lblTitulo.setBounds(98, 19, 226, 52);
 			panelPrincipal.add(lblTitulo);
 			
 			btnVolver = new JButton("Volver");
-			btnVolver.setHorizontalAlignment(SwingConstants.LEFT);
-			btnVolver.setFont(new Font("Dialog", Font.PLAIN, 20));
-			btnVolver.setBounds(10, 255, 89, 35);
+			btnVolver.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
+			btnVolver.setBounds(6, 221, 89, 30);
+			btnVolver.addActionListener(this);
 			panelPrincipal.add(btnVolver);
 			
-			btnReporte = new JButton("Reporte");
+			btnReporte = new JButton("Reporte de Pedidos");
 			btnReporte.setFont(new Font("Dialog", Font.PLAIN, 20));
-			btnReporte.setBounds(255, 118, 134, 46);
+			btnReporte.setBounds(109, 154, 215, 50);
+			btnReporte.addActionListener(this);
 			panelPrincipal.add(btnReporte);
 			
-			btnVentas = new JButton("Ventas");
+			btnVentas = new JButton("Ventas Acumuladas");
 			btnVentas.setFont(new Font("Dialog", Font.PLAIN, 20));
-			btnVentas.setBounds(41, 114, 141, 52);
+			btnVentas.setBounds(109, 92, 215, 50);
+			btnVentas.addActionListener(this);
 			panelPrincipal.add(btnVentas);
+			
 			scrollVentana.setViewportView(panelPrincipal);
 			getContentPane().add(scrollVentana, BorderLayout.CENTER);
 		}
@@ -84,6 +87,7 @@ import java.awt.FlowLayout;
 				dispose();
 			}
 			if (btnReporte == e.getSource()) {
+				administrador=new Administrador();
 				try {
 					JOptionPane.showMessageDialog(null, administrador.reportePedidos());
 				} catch (HeadlessException | EListaVacia e1) {
@@ -91,6 +95,7 @@ import java.awt.FlowLayout;
 				}
 			}
 			if (btnVentas == e.getSource()) {
+				administrador=new Administrador();
 				try {
 					JOptionPane.showMessageDialog(null,"El total facturado es "+ administrador.ventasTotal());
 				} catch (HeadlessException | EListaVacia e1) {
