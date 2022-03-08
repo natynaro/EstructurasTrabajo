@@ -26,9 +26,12 @@ import java.awt.FlowLayout;
 	public class JContabilidad extends JFrame implements ActionListener {
 
 		private JPanel contentPane;
-		JButton btnVentas, btnReporte, btnVolver;
 		JScrollPane scrollVentana;
 		private Administrador administrador;
+		private JLabel lblTitulo;
+		private JButton btnVolver;
+		private JButton btnReporte;
+		private JButton btnVentas;
 
 		public JContabilidad() {
 			setTitle("VENTANA CONTABILIDAD");
@@ -44,38 +47,31 @@ import java.awt.FlowLayout;
 		private void inicializarComponentes() {
 			administrador =new Administrador();
 			getContentPane().setLayout(new BorderLayout(0, 0));
+			
 			JPanel panelPrincipal = new JPanel();
-			panelPrincipal.setLayout(new BorderLayout(0, 0));
-			JPanel panelSupeior = new JPanel();
-			panelPrincipal.add(panelSupeior, BorderLayout.NORTH);
-			JLabel lblTitulo = new JLabel("Contabilidad");
-			lblTitulo.setFont(new Font("Lucida Grande", Font.PLAIN, 40));
+			panelPrincipal.setLayout(null);
+			
+			lblTitulo = new JLabel("Contabilidad");
 			lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
-			panelSupeior.add(lblTitulo);
-			JPanel panelInferior = new JPanel();
-			FlowLayout flowLayout = (FlowLayout) panelInferior.getLayout();
-			flowLayout.setVgap(10);
-			flowLayout.setHgap(20);
-			flowLayout.setAlignment(FlowLayout.LEFT);
-			panelPrincipal.add(panelInferior, BorderLayout.SOUTH);
+			lblTitulo.setFont(new Font("Dialog", Font.PLAIN, 40));
+			lblTitulo.setBounds(77, 10, 226, 52);
+			panelPrincipal.add(lblTitulo);
+			
 			btnVolver = new JButton("Volver");
-			btnVolver.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
 			btnVolver.setHorizontalAlignment(SwingConstants.LEFT);
-			btnVolver.addActionListener(this);
-			panelInferior.add(btnVolver);
-			JPanel panelCentral = new JPanel();
-			panelPrincipal.add(panelCentral, BorderLayout.CENTER);
-			btnVentas = new JButton("Ventas");
-			btnVentas.setBounds(162, 69, 95, 35);
-			btnVentas.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
-			btnVentas.addActionListener(this);
-			panelCentral.setLayout(null);
-			panelCentral.add(btnVentas);
+			btnVolver.setFont(new Font("Dialog", Font.PLAIN, 20));
+			btnVolver.setBounds(10, 255, 89, 35);
+			panelPrincipal.add(btnVolver);
+			
 			btnReporte = new JButton("Reporte");
-			btnReporte.setBounds(418, 69, 103, 35);
-			btnReporte.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
-			btnReporte.addActionListener(this);
-			panelCentral.add(btnReporte);
+			btnReporte.setFont(new Font("Dialog", Font.PLAIN, 20));
+			btnReporte.setBounds(255, 118, 134, 46);
+			panelPrincipal.add(btnReporte);
+			
+			btnVentas = new JButton("Ventas");
+			btnVentas.setFont(new Font("Dialog", Font.PLAIN, 20));
+			btnVentas.setBounds(41, 114, 141, 52);
+			panelPrincipal.add(btnVentas);
 			scrollVentana.setViewportView(panelPrincipal);
 			getContentPane().add(scrollVentana, BorderLayout.CENTER);
 		}
