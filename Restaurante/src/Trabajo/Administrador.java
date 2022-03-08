@@ -2,7 +2,7 @@ package Trabajo;
 
 import java.math.BigInteger;
 import java.util.*;
-
+import java.io.*;
 import gui.JDomiciliario;
 import gui.JRestaurante;
 
@@ -13,13 +13,101 @@ public class Administrador {
 	private Ingredientes[] ingredientesTotal;
 	private Platos[] platosTotal;
 	private Domiciliario[] domiciliarios;
-	
+
 	public Administrador() {
 		this.pedidosTotal = new Pedidos[0];
 		this.ingredientesTotal = new Ingredientes[0];
 		this.platosTotal = new Platos[0];
 		this.domiciliarios = new Domiciliario[0];
+		cargarFicheros();
+
 	}
+
+	public void cargarFicheros() {
+		try {
+			FileInputStream Is = new FileInputStream("Pedidos.txt");
+			ObjectInputStream Os = new ObjectInputStream(Is);
+			pedidosTotal = (Pedidos[]) Os.readObject();
+			Os.close();
+			Is.close();
+		} catch (IOException | ClassNotFoundException e) {
+			System.out.println(e.getMessage());
+		}
+
+		try {
+			FileInputStream Is = new FileInputStream("Domiciliarios.txt");
+			ObjectInputStream Os = new ObjectInputStream(Is);
+			domiciliarios = (Domiciliario[]) Os.readObject();
+			Os.close();
+			Is.close();
+		} catch (IOException | ClassNotFoundException e) {
+			System.out.println(e.getMessage());
+		}
+		try {
+			FileInputStream Is = new FileInputStream("Platos.txt");
+			ObjectInputStream Os = new ObjectInputStream(Is);
+			platosTotal = (Platos[]) Os.readObject();
+			Os.close();
+			Is.close();
+		} catch (IOException | ClassNotFoundException e) {
+			System.out.println(e.getMessage());
+		}
+		try {
+			FileInputStream Is = new FileInputStream("Ingredientes.txt");
+			ObjectInputStream Os = new ObjectInputStream(Is);
+			ingredientesTotal = (Ingredientes[]) Os.readObject();
+			Os.close();
+			Is.close();
+		} catch (IOException | ClassNotFoundException e) {
+			System.out.println(e.getMessage());
+		}
+	}
+
+	public void guardarFicheros() {
+		try {
+			FileOutputStream File = new FileOutputStream("Pedidos.txt");
+			ObjectOutputStream Object = new ObjectOutputStream(File);
+			Object.writeObject(pedidosTotal);
+			Object.close();
+			File.close();
+		} catch (IOException e) {
+			System.out.println(e.getMessage());
+		}
+
+		try {
+			FileOutputStream File = new FileOutputStream("Domiciliarios.txt");
+			ObjectOutputStream Object = new ObjectOutputStream(File);
+			Object.writeObject(domiciliarios);
+			Object.close();
+			File.close();
+		} catch (IOException e) {
+			System.out.println(e.getMessage());
+		}
+		try {
+			FileOutputStream File = new FileOutputStream("Platos.txt");
+			ObjectOutputStream Object = new ObjectOutputStream(File);
+			Object.writeObject(platosTotal);
+			Object.close();
+			File.close();
+		} catch (IOException e) {
+			System.out.println(e.getMessage());
+		}
+		try {
+			FileOutputStream File = new FileOutputStream("Ingredientes.txt");
+			ObjectOutputStream Object = new ObjectOutputStream(File);
+			Object.writeObject(ingredientesTotal);
+			Object.close();
+			File.close();
+		} catch (IOException e) {
+			System.out.println(e.getMessage());
+		}
+	}
+	/*public Administrador() {
+		this.pedidosTotal = new Pedidos[0];
+		this.ingredientesTotal = new Ingredientes[0];
+		this.platosTotal = new Platos[0];
+		this.domiciliarios = new Domiciliario[0];
+	}*/
 
 	public Pedidos[] getPedidosTotal() {
 		return pedidosTotal;
