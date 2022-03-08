@@ -230,7 +230,7 @@ public class Administrador implements Serializable {
 		if (platosTotal.length > 0 && platosTotal != null) {
 			int i = buscarPlato(nombre.toLowerCase());
 			int j = buscarPlato(nombre.toLowerCase()) + 1;
-			while (i < platosTotal.length) {
+			while (i < platosTotal.length-1) {
 				platosTotal[i] = platosTotal[j];
 				i++;
 				j++;
