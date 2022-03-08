@@ -131,7 +131,7 @@ public class JPedido extends JFrame implements ActionListener {
 		btnVolver.addActionListener(this);
 		contentPane.add(btnVolver);
 
-		btnAddOtroPlato = new JButton("Aï¿½adir otro Plato");
+		btnAddOtroPlato = new JButton("A�adir otro Plato");
 		btnAddOtroPlato.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
 		btnAddOtroPlato.setBackground(Color.WHITE);
 		btnAddOtroPlato.setBounds(107, 236, 150, 30);

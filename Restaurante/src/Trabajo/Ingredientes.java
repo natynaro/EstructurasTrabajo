@@ -30,7 +30,7 @@ public class Ingredientes implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Ingredientes [nombre=" + nombre + ", cantidad=" + cantidad + "]";
+		return "[" + nombre + ", cant=" + cantidad + "]";
 	}
 	
 }

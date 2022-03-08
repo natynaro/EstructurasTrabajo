@@ -10,13 +10,13 @@ public class mainRestaurante implements Serializable{
 	public static void main(String[] args) throws IOException, EListaVacia, ENoExiste, EObjetoYaExiste {
 		Administrador Admin = new Administrador();
 		Admin.presentarVentanaRestaurante();
-		Domiciliario dom= new Domiciliario("Pedro");
+		/*Domiciliario dom= new Domiciliario("Pedro");
 		Domiciliario[] d= {dom};
 		Admin.setDomiciliarios(d);
 		Ingredientes ing= new Ingredientes("leche", 2);
 		Ingredientes[] i= {ing};
 		Platos plato= new Platos("cafe", i, 8000);
-		Platos plato2= new Platos("Lecherita", i, 8000);
+		Platos plato2= new Platos("lecherita", i, 8000);
 		Platos plato3= new Platos("leche con crema", i, 8000);
 		Platos[] p= {plato, plato2, plato3};
 		
@@ -26,7 +26,8 @@ public class mainRestaurante implements Serializable{
 		Pedidos[] y= {pedido};
 		Admin.setPedidosTotal(y);
 		
-		Admin.setPlatosTotal(p);
-		Admin.AddIngrediente("Esparragos", 2);
+		Admin.setPlatosTotal(p);*/
+		//Admin.AddIngrediente("Esparragos", 2);
+		//Admin.borrarPlato(plato2.getNombre());
 	}
 }

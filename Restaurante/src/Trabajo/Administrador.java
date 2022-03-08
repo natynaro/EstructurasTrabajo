@@ -211,8 +211,8 @@ public class Administrador implements Serializable {
 	}
 
 	// se crea un nuevo plato con nombre, sus ingredientes y el precio
-	public void addPlato(String nombre, Ingredientes[] ingredientesTotal, double precio) throws ENoExiste, EListaVacia {
-
+	public void addPlato(String nombre, Ingredientes[] ingredientesTotal, double precio) throws EPrecioNeg,ENoExiste, EListaVacia {
+    if(precio > 0) {
 		if (platosTotal == null) {
 			platosTotal = new Platos[1];
 			platosTotal[0] = new Platos(nombre.toLowerCase(), ingredientesTotal, precio);
@@ -222,14 +222,17 @@ public class Administrador implements Serializable {
 			platosTotal[platosTotal.length - 1] = new Platos(nombre.toLowerCase(), ingredientesTotal, precio);
 			guardarFicheros();
 		}
-
+    }else {
+    	throw new EPrecioNeg("El precio no puede ser cero o negativo");
+    }
+    	
 	}
 
 	// se borra el plato de acuerdo con el nombre
 	public void borrarPlato(String nombre) throws ENoExiste, EListaVacia {
 		if (platosTotal.length > 0 && platosTotal != null) {
 			int i = buscarPlato(nombre.toLowerCase());
-			int j = buscarPlato(nombre.toLowerCase()) + 1;
+			int j = i + 1;
 			while (i < platosTotal.length-1) {
 				platosTotal[i] = platosTotal[j];
 				i++;
@@ -254,7 +257,7 @@ public class Administrador implements Serializable {
 			if (i < platosTotal.length || platosTotal[0].getNombre().equals(n)) {
 				return i;
 			} else
-				throw new ENoExiste("No existe un plato con ese nombre, inténtelo neuvamente o añada un nuevo plato");
+				throw new ENoExiste("No existe un plato con ese nombre, inténtelo nuevamente o añada un nuevo plato");
 		} else
 			throw new EListaVacia("La lista de platos está vacía, añada primero un plato");
 

@@ -41,7 +41,7 @@ public class Platos implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Platos [nombre=" + nombre + ", Ingredientes=" + Arrays.toString(Ingredientes) + ", precio=" + precio
+		return "[" + nombre + ", " + Arrays.toString(Ingredientes) + ", precio=" + precio
 				+ "]";
 	}
 	

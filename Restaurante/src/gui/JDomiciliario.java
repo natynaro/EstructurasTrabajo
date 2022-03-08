@@ -52,7 +52,7 @@ public class JDomiciliario extends JFrame implements ActionListener{
 		PanelDomiciliario.add(lblTitulo);
 		
 		btnAddDomiciliario = new JButton("Anadir domiciliario");
-		btnAddDomiciliario.setBounds(26, 85, 187, 50);
+		btnAddDomiciliario.setBounds(26, 85, 202, 50);
 		btnAddDomiciliario.addActionListener(this);
 		PanelDomiciliario.add(btnAddDomiciliario);
 		
