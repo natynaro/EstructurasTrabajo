@@ -333,14 +333,17 @@ public class Administrador {
 	}
 
 	//
-	public void AddIngrediente(String nombre, int cantidad) {
-		if(ingredientesTotal == null || ingredientesTotal.length<1) {
-			ingredientesTotal = new Ingredientes[1];
-			ingredientesTotal[0] = new Ingredientes(nombre.toLowerCase(),cantidad);
-		}else {
+	public void AddIngrediente(String nombre, int cantidad) throws EObjetoYaExiste, IOException {
+		if (ingredientesTotal == null) {
+			if (IngredienteExiste(nombre) == false) {
+				ingredientesTotal = new Ingredientes[1];
+				ingredientesTotal[0] = new Ingredientes(nombre.toLowerCase(), cantidad);
+			}else {
+				throw new EObjetoYaExiste("Ya hay un ingrediente con este nombre. Por favor intente con otro nombre");
+		}}else {
 			ingredientesTotal = Arrays.copyOf(ingredientesTotal, ingredientesTotal.length + 1);
-			ingredientesTotal[ingredientesTotal.length - 1] = new Ingredientes(nombre.toLowerCase(),cantidad);
-		}
+			ingredientesTotal[ingredientesTotal.length - 1] = new Ingredientes(nombre.toLowerCase(), cantidad);
+			}
 	}
 	
 	//
@@ -390,6 +393,12 @@ public class Administrador {
 	
 	public class EPrecioNeg extends Exception{
 		public EPrecioNeg(String mensaje) {
+			super(mensaje);
+		}
+	}
+	
+	public class EObjetoYaExiste extends Exception {
+		public EObjetoYaExiste(String mensaje) {
 			super(mensaje);
 		}
 	}
