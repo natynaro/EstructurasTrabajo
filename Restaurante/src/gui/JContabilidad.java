@@ -11,6 +11,7 @@
 	
 	import Trabajo.Administrador;
 import Trabajo.Administrador.EListaVacia;
+import Trabajo.Administrador.*;
 
 import javax.swing.JLabel;
 	import javax.swing.JOptionPane;
@@ -32,13 +33,16 @@ import java.awt.FlowLayout;
 		public JContabilidad() {
 			setTitle("VENTANA CONTABILIDAD");
 			//setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-			setSize(1000, 500);
+			Administrador administrador=new Administrador();
+			setSize(500, 450);
 			setLocationRelativeTo(null);
 			scrollVentana = new JScrollPane();
 			inicializarComponentes();
+			setResizable(false);
 		}
 
 		private void inicializarComponentes() {
+			administrador =new Administrador();
 			getContentPane().setLayout(new BorderLayout(0, 0));
 			JPanel panelPrincipal = new JPanel();
 			panelPrincipal.setLayout(new BorderLayout(0, 0));
@@ -92,7 +96,7 @@ import java.awt.FlowLayout;
 			}
 			if (btnVentas == e.getSource()) {
 				try {
-					JOptionPane.showMessageDialog(null, administrador.ventasTotal());
+					JOptionPane.showMessageDialog(null,"El total facturado es "+ administrador.ventasTotal());
 				} catch (HeadlessException | EListaVacia e1) {
 					JOptionPane.showMessageDialog(null,e1.getMessage());
 				}

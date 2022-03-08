@@ -39,14 +39,16 @@ public class JInfoIngredientes extends JFrame implements ActionListener {
 	public JInfoIngredientes(String accion) {
 //setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("VENTANA INFO INGREDIENTES");
+		Administrador administrador = new Administrador();
 		this.accion = accion;
-		administrador = new Administrador();
 		iniciarComponentes();
 		setLocationRelativeTo(null);
+		setResizable(false);
 		
 	}
 
 	private void iniciarComponentes() {
+		administrador =new Administrador();
 		setBounds(100, 100, 450, 300);
 		JInfoIngredientes = new JPanel();
 		JInfoIngredientes.setBackground(UIManager.getColor("Button.background"));
@@ -125,7 +127,7 @@ public class JInfoIngredientes extends JFrame implements ActionListener {
 			switch (accion) {
 			case "AddIngrediente":
 				String nIngrediente = txtNombreIngrediente.getText();
-				int cIng = boxCantidadIngredientes.getSelectedIndex();
+				int cIng = boxCantidadIngredientes.getSelectedIndex()+1;
 				if (administrador.IngredienteExiste(nIngrediente)) {
 					JOptionPane.showMessageDialog(null, "El ingrediente ya existe, ingrese un ingrediente nuevo");
 					JIngredientes jg = new JIngredientes();

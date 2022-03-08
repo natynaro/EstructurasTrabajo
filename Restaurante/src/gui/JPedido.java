@@ -53,6 +53,7 @@ public class JPedido extends JFrame implements ActionListener {
 		// setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		iniciarComponentes();
 		setLocationRelativeTo(null);
+		setResizable(false);
 	}
 
 	public void iniciarComponentes() {
@@ -154,7 +155,7 @@ public class JPedido extends JFrame implements ActionListener {
 			dispose();
 		}
 		if (btnAddOtroPlato == e.getSource()) {
-			int numPlato = cbxCantidad.getSelectedIndex();
+			int numPlato = cbxCantidad.getSelectedIndex()+1;
 			Platos nombPlato = (Platos) cbxPlatos.getSelectedItem();
 			for (int i = numPlato; i > 0; i--) {
 				platosTotal = Arrays.copyOf(platosTotal, platosTotal.length + 1);

@@ -47,6 +47,7 @@ public class JRestaurante extends JFrame implements ActionListener {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		iniciarComponentes();
 		setLocationRelativeTo(null);
+		setResizable(false);
 	}
 
 	public void iniciarComponentes() {

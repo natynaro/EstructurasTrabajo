@@ -51,6 +51,7 @@ public class JInfoPlatos extends JFrame implements ActionListener {
 		this.accion = accion;
 		iniciarComponentes();
 		setLocationRelativeTo(null);
+		setResizable(false);
 	}
 
 	public void iniciarComponentes() {

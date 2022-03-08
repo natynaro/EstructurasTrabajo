@@ -33,6 +33,7 @@ public class JIngredientes extends JFrame implements ActionListener{
 		iniciarComponentes();
 		setTitle("VENTANA PRINCIPAL INGREDIENTES");
 		setLocationRelativeTo(null);
+		setResizable(false);
 		
 	}
 

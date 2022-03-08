@@ -35,6 +35,7 @@ public class JDomiciliario extends JFrame implements ActionListener{
 		Administrador administrador =new Administrador();
 		iniciarComponentes();	
 		setLocationRelativeTo(null);
+		setResizable(false);
 	}
 	
 	public void iniciarComponentes() {
