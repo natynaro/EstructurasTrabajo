@@ -31,14 +31,13 @@ public class JInfoDomiciliario extends JFrame implements ActionListener {
 	private JLabel lblTitulo;
 	private JButton btnAceptar;
 	private JButton btnvolver;
-	private JList list;
 	private Administrador administrador;
 	private String accion;
 
 	public JInfoDomiciliario(String accion) {
 		setTitle("VENTANA INFO DOMICILIARIOS");
 // setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		administrador = new Administrador();
+		this.administrador = new Administrador();
 		this.accion = accion;
 		iniciarComponentes();
 		setLocationRelativeTo(null);
@@ -51,12 +50,6 @@ public class JInfoDomiciliario extends JFrame implements ActionListener {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-
-		list = new JList();
-		list.setVisible(true);
-		list.setBounds(17, 28, 167, 192);
-// list.setListData(administrador.getDomiciliarios());
-		contentPane.add(list);
 
 		btnvolver = new JButton("volver");
 		btnvolver.setBounds(17, 232, 100, 30);
@@ -88,11 +81,17 @@ public class JInfoDomiciliario extends JFrame implements ActionListener {
 		comboBox.setBounds(263, 156, 96, 21);
 		comboBox.setVisible(false);
 		contentPane.add(comboBox);
+		
+		JComboBox boxDom = new JComboBox();
+		boxDom.setToolTipText("ListaDomiciliarios");
+		boxDom.setModel(new DefaultComboBoxModel(administrador.getDomiciliarios()));
+		boxDom.setBounds(6, 34, 202, 21);
+		contentPane.add(boxDom);
 
 		switch (accion) {
 		case "ListaDomiciliarios":
 			lblTitulo.setText("Lista de domiciliarios");
-			list.setVisible(true);
+			
 			btnAceptar.setVisible(false);
 			break;
 		case "EliminarDomiciliario":

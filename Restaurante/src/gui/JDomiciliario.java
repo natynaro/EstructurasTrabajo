@@ -84,14 +84,14 @@ public class JDomiciliario extends JFrame implements ActionListener{
 			dispose();
 		}
 		if(btnListaDomiciliarios==e.getSource()) {
-			//JInfoDomiciliario JID= new JInfoDomiciliario("ListaDomiciliarios");
-			//JID.setVisible(true);
-		    Domiciliario [] h= administrador.getDomiciliarios();
+			JInfoDomiciliario JID= new JInfoDomiciliario("ListaDomiciliarios");
+			JID.setVisible(true);
+		   /* Domiciliario [] h= administrador.getDomiciliarios();
             String t="";
 		    for (int i=0;i<h.length;i++) {
 				t += h[i].getNombre() + "\n";
 			}
-		    JOptionPane.showMessageDialog(null, t);
+		    JOptionPane.showMessageDialog(null, t);*/
 			dispose();
 		}
 		if(btnEliminarDomiciliario==e.getSource()) {
