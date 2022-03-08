@@ -338,38 +338,63 @@ public class Administrador implements Serializable{
 	}
 
 	//
-	/*public void AddIngrediente(String nombre, int cantidad) throws EObjetoYaExiste, IOException {
+	public void AddIngrediente(String nombre, int cantidad) throws EObjetoYaExiste, IOException, EListaVacia {
 		if (ingredientesTotal == null) {
 			if (IngredienteExiste(nombre) == false) {
 				ingredientesTotal = new Ingredientes[1];
 				ingredientesTotal[0] = new Ingredientes(nombre.toLowerCase(), cantidad);
+				guardarFicheros();
 			}else {
 				throw new EObjetoYaExiste("Ya hay un ingrediente con este nombre. Por favor intente con otro nombre");
-		}}else {
+			}
+		}else {
 			ingredientesTotal = Arrays.copyOf(ingredientesTotal, ingredientesTotal.length + 1);
 			ingredientesTotal[ingredientesTotal.length - 1] = new Ingredientes(nombre.toLowerCase(), cantidad);
+		}
+	}
+
+	public boolean IngredienteExiste(String nIng) throws EListaVacia {
+		if (ingredientesTotal != null && ingredientesTotal.length > 0) {
+			boolean flag = false;
+			for (int i = 0; i < ingredientesTotal.length; i++) {
+				if (nIng.compareTo(ingredientesTotal[i].getNombre()) == 0) {
+					flag = true;
+				}
 			}
-	}*/
-	
-	//
-	public void EliminarIngrediente(String nombre) throws EListaVacia, ENoExiste {
-		boolean seEncontroElIngrediente = false;
-		if(ingredientesTotal != null && ingredientesTotal.length > 0) {
-			for(int i = 0; i<ingredientesTotal.length; i++) {
-				if(nombre.toLowerCase().compareTo(ingredientesTotal[i].getNombre()) == 0) {
-					seEncontroElIngrediente = true;
-					for(int u = i; u<ingredientesTotal.length - 1; u++) {
-						ingredientesTotal[u] = ingredientesTotal[u+1];
-					}
-					ingredientesTotal = Arrays.copyOf(ingredientesTotal, ingredientesTotal.length + 1);
-					guardarFicheros();
-					}
-				}
-				if(seEncontroElIngrediente == false) {
-					throw new ENoExiste("No se encontró un ingrediente con ese nombre, inténtelo de nuevo con un nuevo nombre o añada un ingrediente con este nombre");
-				}
-			}else {
-				throw new EListaVacia("La lista de ingredientes está vacía, añada primero ingredientes");
+			return flag;
+		} else {
+			throw new EListaVacia("La lista de ingredientes está vacía, añada primero ingredientes");
+		}
+
+	}
+
+	public int BuscarIngrediente(String nombre) throws EListaVacia, ENoExiste{
+		if(ingredientesTotal.length>0 && ingredientesTotal!=null) {
+			String n = nombre.toLowerCase();
+			int i =0;
+			while(i<ingredientesTotal.length && !n.equals(ingredientesTotal[i].getNombre().toLowerCase())) {
+				i++;
+			}
+			if(i<ingredientesTotal.length || ingredientesTotal[0].getNombre().equals(n)) {
+				return i;
+			}else throw new ENoExiste("No existe un domiciliario con ese nombre, intentelo nuevamente o añada domiciliario");
+		}else throw new EListaVacia("La lista de domiciliarios está vacía, añada primero un domiciliario");
+
+	}
+
+	public void EliminarIngrediente(String nombre) throws EListaVacia, ENoExiste, IOException {
+		try {
+			int index;
+			index = BuscarIngrediente(nombre);
+			if(ingredientesTotal!=null && ingredientesTotal.length>0) {
+				for(int i = index; i<ingredientesTotal.length-1;i++) {
+					ingredientesTotal[i]=ingredientesTotal[i+1];
+				}	
+				ingredientesTotal = Arrays.copyOf(ingredientesTotal, ingredientesTotal.length-1);
+				guardarFicheros();
+			}else throw new EListaVacia("La lista de ingredientes est� vac�a, a�ada primero ingredientes");
+		} catch (ENoExiste e) {
+			e.printStackTrace();
 		}
 	}
     
