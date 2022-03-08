@@ -22,12 +22,6 @@ public class Administrador {
 		cargarFicheros();
 
 	}
-	public Administrador(Pedidos[] pedidosTotal,Ingredientes[] ingredientesTotal,Platos[] platosTotal, Domiciliario[] domiciliarios) {
-		this.pedidosTotal=pedidosTotal;
-		this.ingredientesTotal= ingredientesTotal;
-		this.platosTotal=platosTotal;
-		this.domiciliarios=domiciliarios;
-	}
 
 	public void cargarFicheros() {
 		try {
@@ -339,7 +333,7 @@ public class Administrador {
 	}
 
 	//
-/*	public void AddIngrediente(String nombre, int cantidad) throws EObjetoYaExiste, IOException {
+	public void AddIngrediente(String nombre, int cantidad) throws EObjetoYaExiste, IOException {
 		if (ingredientesTotal == null) {
 			if (IngredienteExiste(nombre) == false) {
 				ingredientesTotal = new Ingredientes[1];
@@ -350,7 +344,7 @@ public class Administrador {
 			ingredientesTotal = Arrays.copyOf(ingredientesTotal, ingredientesTotal.length + 1);
 			ingredientesTotal[ingredientesTotal.length - 1] = new Ingredientes(nombre.toLowerCase(), cantidad);
 			}
-	}*/
+	}
 	
 	//
 	public void EliminarIngrediente(String nombre) throws EListaVacia, ENoExiste {
