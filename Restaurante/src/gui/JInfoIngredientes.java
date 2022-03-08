@@ -34,6 +34,7 @@ public class JInfoIngredientes extends JFrame implements ActionListener {
 	private JLabel lblTitulo;
 	private JComboBox boxCantidadIngredientes;
 	private Administrador administrador;
+	private JComboBox comboBox;
 
 	public JInfoIngredientes(String accion) {
 //setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -54,11 +55,11 @@ public class JInfoIngredientes extends JFrame implements ActionListener {
 		lblTitulo = new JLabel("");
 		lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTitulo.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
-		lblTitulo.setBounds(196, 22, 236, 41);
+		lblTitulo.setBounds(6, 22, 426, 41);
 		JInfoIngredientes.add(lblTitulo);
 		txtNombreIngrediente = new JTextField();
 		txtNombreIngrediente.setVisible(false);
-		txtNombreIngrediente.setBounds(201, 75, 220, 40);
+		txtNombreIngrediente.setBounds(63, 111, 311, 40);
 		JInfoIngredientes.add(txtNombreIngrediente);
 		txtNombreIngrediente.setColumns(10);
 		boxCantidadIngredientes = new JComboBox();
@@ -66,7 +67,7 @@ public class JInfoIngredientes extends JFrame implements ActionListener {
 		boxCantidadIngredientes
 				.setModel(new DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9" }));
 		boxCantidadIngredientes.setMaximumRowCount(9);
-		boxCantidadIngredientes.setBounds(211, 127, 197, 28);
+		boxCantidadIngredientes.setBounds(160, 163, 113, 28);
 		JInfoIngredientes.add(boxCantidadIngredientes);
 		btnVolver = new JButton("Volver");
 		btnVolver.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
@@ -77,12 +78,13 @@ public class JInfoIngredientes extends JFrame implements ActionListener {
 		btnAceptar = new JButton("Aceptar");
 		btnAceptar.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
 		btnAceptar.setBackground(SystemColor.menu);
-		btnAceptar.setBounds(261, 167, 82, 40);
+		btnAceptar.setBounds(177, 203, 82, 40);
 		btnAceptar.addActionListener(this);
 		JInfoIngredientes.add(btnAceptar);
-		JList list = new JList();
-		list.setBounds(192, 206, -169, -183);
-		JInfoIngredientes.add(list);
+		
+		comboBox = new JComboBox();
+		comboBox.setBounds(43, 71, 357, 28);
+		JInfoIngredientes.add(comboBox);
 		switch (accion) {
 		case "AddIngrediente":
 			lblTitulo.setText("A�adir Ingrediente");

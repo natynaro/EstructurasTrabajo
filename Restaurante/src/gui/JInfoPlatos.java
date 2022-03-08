@@ -22,6 +22,7 @@ import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
+import javax.swing.JComboBox;
 
 public class JInfoPlatos extends JFrame implements ActionListener{
 	
@@ -29,13 +30,13 @@ public class JInfoPlatos extends JFrame implements ActionListener{
 	private JPanel contentPane;
 	private JTextField txtNombrePlato;
 	private JTextField txtPrecio;
-	private JList list;
 	private JLabel lblTitulo;
 	private JButton btnAceptar;
 	private JButton btnVolver;
 	private Administrador administrador;
 	private JLabel IbReq1;
 	private JLabel lbReq2;
+	private JComboBox comboBox;
 
 	public JInfoPlatos(String accion) {
 		setTitle("VENTANA INFO PLATOS");
@@ -55,7 +56,7 @@ public class JInfoPlatos extends JFrame implements ActionListener{
 
 		btnAceptar = new JButton("Aceptar");
 		btnAceptar.setFont(new Font("Lucida Grande", Font.PLAIN, 16));
-		btnAceptar.setBounds(258, 188, 99, 40);
+		btnAceptar.setBounds(185, 213, 99, 40);
 		btnAceptar.addActionListener(this);
 		contentPane.add(btnAceptar);
 		
@@ -66,38 +67,36 @@ public class JInfoPlatos extends JFrame implements ActionListener{
 		
 		txtNombrePlato = new JTextField();
 		txtNombrePlato.setToolTipText("");
-		txtNombrePlato.setBounds(200, 87, 220, 40);
+		txtNombrePlato.setBounds(146, 109, 274, 40);
 		contentPane.add(txtNombrePlato);
 		txtNombrePlato.setColumns(10);
 		
 		txtPrecio = new JTextField();
 		txtPrecio.setToolTipText("");
 		txtPrecio.setVisible(false);
-		txtPrecio.setBounds(200, 137, 220, 40);
+		txtPrecio.setBounds(146, 161, 274, 40);
 		contentPane.add(txtPrecio);
 		txtPrecio.setColumns(10);
-		
-		list = new JList();
-		list.setVisible(false);
-		list.setListData(administrador.getPlatosTotal());
-		list.setBounds(21, 18, 157, 210);
-		contentPane.add(list);
 		
 		lblTitulo = new JLabel("");
 		lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTitulo.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
-		lblTitulo.setBounds(196, 22, 236, 41);
+		lblTitulo.setBounds(102, 22, 294, 41);
 		contentPane.add(lblTitulo);
 		
 		IbReq1 = new JLabel("Nombre");
 		IbReq1.setFont(new Font("Lucida Grande",Font.PLAIN,14));
-		IbReq1.setBounds(134, 100, 56, 13);
+		IbReq1.setBounds(68, 122, 56, 13);
 		contentPane.add(IbReq1);
 		
 		lbReq2 = new JLabel("Precio");
 		lbReq2.setFont(new Font("Lucida Grande",Font.PLAIN,14));
-		lbReq2.setBounds(145, 150, 45, 13);
+		lbReq2.setBounds(68, 174, 45, 13);
 		contentPane.add(lbReq2);
+		
+		comboBox = new JComboBox();
+		comboBox.setBounds(55, 75, 362, 27);
+		contentPane.add(comboBox);
 		
 		switch(accion) {
 		

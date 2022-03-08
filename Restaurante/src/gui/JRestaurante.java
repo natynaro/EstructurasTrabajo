@@ -64,7 +64,7 @@ public class JRestaurante extends JFrame implements ActionListener {
 		lblRestaurante = new JLabel("Restaurante");
 		lblRestaurante.setHorizontalAlignment(SwingConstants.CENTER);
 		lblRestaurante.setFont(new Font("Lucida Grande", Font.PLAIN, 24));
-		lblRestaurante.setBounds(6, 17, 440, 29);
+		lblRestaurante.setBounds(0, 17, 440, 29);
 		contentPane.add(lblRestaurante);
 		btnDomiciliarios = new JButton("Domiciliarios");
 		btnDomiciliarios.setBounds(31, 138, 164, 50);
@@ -75,11 +75,11 @@ public class JRestaurante extends JFrame implements ActionListener {
 		btnPedidos.addActionListener(this);
 		contentPane.add(btnPedidos);
 		btnIngredientes = new JButton("Ingredientes");
-		btnIngredientes.setBounds(235, 128, 187, 50);
+		btnIngredientes.setBounds(235, 138, 187, 50);
 		btnIngredientes.addActionListener(this);
 		contentPane.add(btnIngredientes);
 		btnContabilidad = new JButton("Contabilidad");
-		btnContabilidad.setBounds(130, 194, 187, 50);
+		btnContabilidad.setBounds(123, 194, 187, 50);
 		btnContabilidad.addActionListener(this);
 		contentPane.add(btnContabilidad);
 	}

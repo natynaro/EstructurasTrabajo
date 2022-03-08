@@ -59,33 +59,33 @@ public class JInfoDomiciliario extends JFrame implements ActionListener {
 		lblTitulo = new JLabel("");
 		lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTitulo.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
-		lblTitulo.setBounds(204, 50, 246, 41);
+		lblTitulo.setBounds(68, 25, 336, 41);
 		contentPane.add(lblTitulo);
 
 		txtNombre = new JTextField();
 		txtNombre.setVisible(false);
 		txtNombre.setToolTipText("Ingrese el nombre del domiciliario");
-		txtNombre.setBounds(224, 81, 210, 50);
+		txtNombre.setBounds(68, 111, 336, 50);
 		contentPane.add(txtNombre);
 		txtNombre.setColumns(10);
 
 		btnAceptar = new JButton("Aceptar");
 		btnAceptar.setFont(new Font("Lucida Grande", Font.PLAIN, 16));
-		btnAceptar.setBounds(262, 199, 115, 40);
+		btnAceptar.setBounds(177, 209, 115, 40);
 		btnAceptar.addActionListener(this);
 		contentPane.add(btnAceptar);
 
 		JComboBox comboBox = new JComboBox();
 		comboBox.setFont(new Font("Lucida Grande", Font.PLAIN, 14));
 		comboBox.setModel(new DefaultComboBoxModel(new String[] { "Disponible", "No Disponible" }));
-		comboBox.setBounds(263, 156, 96, 21);
+		comboBox.setBounds(135, 176, 196, 21);
 		comboBox.setVisible(false);
 		contentPane.add(comboBox);
 		
 		JComboBox boxDom = new JComboBox();
 		boxDom.setToolTipText("ListaDomiciliarios");
 		boxDom.setModel(new DefaultComboBoxModel(administrador.getDomiciliarios()));
-		boxDom.setBounds(6, 34, 202, 21);
+		boxDom.setBounds(30, 78, 419, 21);
 		contentPane.add(boxDom);
 
 		switch (accion) {

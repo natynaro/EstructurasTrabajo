@@ -70,7 +70,7 @@ public class JDomiciliario extends JFrame implements ActionListener{
 		btnvolver.addActionListener(this);
 		PanelDomiciliario.add(btnvolver);
 		
-		btnDisponible = new JButton("Domicilio Completado");
+		btnDisponible = new JButton("Disponibilidad");
 		btnDisponible.setBounds(253, 158, 164, 50);
 		btnDisponible.addActionListener(this);
 		PanelDomiciliario.add(btnDisponible);
