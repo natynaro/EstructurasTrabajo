@@ -10,8 +10,5 @@ public class mainRestaurante implements Serializable{
 		Administrador Admin = new Administrador();
 		//Admin.presentarVentanaRestaurante();
 		Admin.addPlato("Hamburguesa", null, 100);
-		
-		
-	    
 	}
 }
