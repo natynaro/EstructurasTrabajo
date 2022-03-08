@@ -40,6 +40,7 @@ public class JInfoPlatos extends JFrame implements ActionListener{
 
 	public JInfoPlatos(String accion) {
 		setTitle("VENTANA INFO PLATOS");
+		Administrador administrador=new Administrador();
 		this.accion=accion;
 		iniciarComponentes();
 		setLocationRelativeTo(null);
@@ -189,7 +190,7 @@ public class JInfoPlatos extends JFrame implements ActionListener{
 				double precio2=Double.parseDouble(txtPrecio.getText());
 				//mostrar la lista de ingredientes para que seleccione y le asigne la cantidad
 				try {
-					administrador.addPlato(plato2, null, precio2);
+					administrador.addPlato(plato2, administrador.getIngredientesTotal(), precio2);
 					break;
 				} catch (ENoExiste | EListaVacia e1) {
 					JOptionPane.showMessageDialog(null,e1.getMessage());

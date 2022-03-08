@@ -8,6 +8,8 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import Trabajo.Administrador;
+import Trabajo.Administrador.EListaVacia;
+import Trabajo.Administrador.ENoExiste;
 
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
@@ -31,6 +33,7 @@ public class JPlatos extends JFrame implements ActionListener{
 
 	public JPlatos() {
 		setTitle("VENTANA PLATOS");
+		Administrador administrador=new Administrador();
 		iniciarComponentes();
 		setLocationRelativeTo(null);	
 	}
@@ -86,27 +89,35 @@ public class JPlatos extends JFrame implements ActionListener{
 			dispose();
 		}
 		if(btnListaPlatos==e.getSource()) {
-			JInfoPlatos JIP1= new JInfoPlatos("ListaPlatos");
+			JInfoPlatos JIP1;
+			JIP1 = new JInfoPlatos("ListaPlatos");
 			JIP1.setVisible(true);
+			
 			dispose();
 		}
 		if(btnModificarPPlato==e.getSource()) {
-			JInfoPlatos JIP2= new JInfoPlatos("ModificarPPlato");
+			JInfoPlatos JIP2;
+			JIP2 = new JInfoPlatos("ModificarPPlato");
 			JIP2.setVisible(true);
 			dispose();
 		}
 		if(btnModificarIPlato==e.getSource()) {
-			JInfoPlatos JIP3= new JInfoPlatos("ModificarIPlato");
+			JInfoPlatos JIP3;
+			JIP3 = new JInfoPlatos("ModificarIPlato");
 			JIP3.setVisible(true);
+			
 			dispose();
 		}
 		if(btnEliminarPlato==e.getSource()) {
-			JInfoPlatos JIP4= new JInfoPlatos("EliminarPlato");
+			JInfoPlatos JIP4;
+			JIP4 = new JInfoPlatos("EliminarPlato");
 			JIP4.setVisible(true);
+			
 			dispose();
 		}
 		if(btnAddPlato==e.getSource()) {
-			JInfoPlatos JIP5= new JInfoPlatos("AddPlato");
+			JInfoPlatos JIP5;
+			JIP5 = new JInfoPlatos("AddPlato");
 			JIP5.setVisible(true);
 			dispose();
 		}
