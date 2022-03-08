@@ -340,7 +340,7 @@ public class Administrador implements Serializable {
 			}
 			return v;
 		} else
-			throw new EListaVacia("La lista de Ventas está vacía");
+			throw new EListaVacia("La lista de pedidos está vacía, añada primero ingredientes");
 
 	}
 

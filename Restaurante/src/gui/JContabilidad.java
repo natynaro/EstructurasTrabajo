@@ -35,7 +35,6 @@ import java.awt.FlowLayout;
 			setSize(1000, 500);
 			setLocationRelativeTo(null);
 			scrollVentana = new JScrollPane();
-			administrador = new Administrador();
 			inicializarComponentes();
 		}
 
@@ -84,10 +83,7 @@ import java.awt.FlowLayout;
 			}
 			if (btnReporte == e.getSource()) {
 				try {
-					if(administrador.getPedidosTotal()!=null) {
-						JOptionPane.showMessageDialog(null, administrador.reporteDiario());
-					}else {JOptionPane.showMessageDialog(null, "Aún no se han realizado ventas en el día");}
-					
+					JOptionPane.showMessageDialog(null, administrador.reporteDiario());
 				} catch (HeadlessException | EListaVacia e1) {
 					JOptionPane.showMessageDialog(null,e1.getMessage());
 				}
