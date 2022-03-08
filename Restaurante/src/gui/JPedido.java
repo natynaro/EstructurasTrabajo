@@ -154,10 +154,10 @@ public class JPedido extends JFrame implements ActionListener{
 			dispose();
 		}if(btnAddOtroPlato==e.getSource()) {
 			int numPlato= cbxCantidad.getSelectedIndex();
-			String nombPlato= (String) cbxPlatos.getSelectedItem();
+			Platos nombPlato= (Platos) cbxPlatos.getSelectedItem();
 			for(int i=numPlato; i>0;i--) {
 				platosTotal= Arrays.copyOf(platosTotal, platosTotal.length+1);
-				platosTotal[platosTotal.length-1]=nombPlato;
+				platosTotal[platosTotal.length-1]=nombPlato.getNombre();
 			}
 			JOptionPane.showMessageDialog(null,"Añadido");
 		}if(btnConfirmarPedido==e.getSource()) {

@@ -15,7 +15,15 @@ public class mainRestaurante implements Serializable{
 		Ingredientes ing= new Ingredientes("leche", 2);
 		Ingredientes[] i= {ing};
 		Platos plato= new Platos("cafe", i, 8000);
-		Platos[] p= {plato};
+		Platos plato2= new Platos("Lecherita", i, 8000);
+		Platos plato3= new Platos("leche con crema", i, 8000);
+		Platos[] p= {plato, plato2, plato3};
+		
+		Usuario usu= new Usuario("coco", "t", "z");
+		Pedidos pedido= new Pedidos(p, "cod", 100, usu, dom);
+		
+		Pedidos[] y= {pedido};
+		Admin.setPedidosTotal(y);
 		
 		Admin.setPlatosTotal(p);
 	}
