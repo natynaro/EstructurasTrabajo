@@ -37,15 +37,15 @@ public class JInfoDomiciliario extends JFrame implements ActionListener {
 
 	public JInfoDomiciliario(String accion) {
 		setTitle("VENTANA INFO DOMICILIARIOS");
-		// setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		administrador=new Administrador();
+// setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		administrador = new Administrador();
 		this.accion = accion;
 		iniciarComponentes();
 		setLocationRelativeTo(null);
 	}
 
 	public void iniciarComponentes() {
-		// setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+// setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 472, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -55,7 +55,6 @@ public class JInfoDomiciliario extends JFrame implements ActionListener {
 		list = new JList();
 		list.setVisible(true);
 		list.setBounds(17, 28, 167, 192);
-		list.setListData(administrador.getDomiciliarios());
 		contentPane.add(list);
 
 		btnvolver = new JButton("volver");
@@ -100,7 +99,7 @@ public class JInfoDomiciliario extends JFrame implements ActionListener {
 			txtNombre.setVisible(true);
 			break;
 		case "AddDomiciliario":
-			lblTitulo.setText("Añadir domiciliarios");
+			lblTitulo.setText("Aï¿½adir domiciliarios");
 			txtNombre.setVisible(true);
 			break;
 		case "Completado":
@@ -123,32 +122,31 @@ public class JInfoDomiciliario extends JFrame implements ActionListener {
 		if (btnAceptar == e.getSource()) {
 			switch (accion) {
 			case "ListaDomiciliarios":
-				// mostrar la lista
 				dispose();
 				break;
 
 			case "EliminarDomiciliario":
 				String nom = txtNombre.getText();
 				try {
-					//administrador=new Administrador();
-					if(administrador.buscarDomiciliario(nom)>=0) {
+					if (administrador.buscarDomiciliario(nom) >= 0) {
 						administrador.quitarDomiciliario(nom);
-						JOptionPane.showMessageDialog(null,"El domiciliario se eliminó con éxito");
-					
-					break;
+						JOptionPane.showMessageDialog(null, "El domiciliario se eliminï¿½ con ï¿½xito");
+						break;
 					}
 				} catch (EListaVacia | ENoExiste e1) {
 					JOptionPane.showMessageDialog(null, e1.getMessage());
 					break;
 				}
-				JDomiciliario jd=new JDomiciliario();
+				JDomiciliario jd = new JDomiciliario();
 				jd.setVisible(true);
 				dispose();
 
 			case "AddDomiciliario":
 				String nom2 = txtNombre.getText();
-				administrador=new Administrador();
 				administrador.addDomiciliario(nom2);
+				JOptionPane.showMessageDialog(null, "El domiciliario se aÃ±adiÃ³ con Ã©xito");
+				JDomiciliario jg = new JDomiciliario();
+				jg.setVisible(true);
 				dispose();
 				break;
 
@@ -156,12 +154,13 @@ public class JInfoDomiciliario extends JFrame implements ActionListener {
 				String nom3 = txtNombre.getText();
 				try {
 					administrador.setDisponible(nom3, true);
+					JDomiciliario ji = new JDomiciliario();
+					ji.setVisible(true);
+					dispose();
 					break;
 				} catch (ENoExiste | EListaVacia e1) {
 					JOptionPane.showMessageDialog(null, e1.getMessage());
 				}
-				dispose();
-
 			}
 
 		}

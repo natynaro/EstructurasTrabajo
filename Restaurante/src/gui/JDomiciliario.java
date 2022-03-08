@@ -8,8 +8,10 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import Trabajo.Administrador;
+import Trabajo.Domiciliario;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -30,6 +32,7 @@ public class JDomiciliario extends JFrame implements ActionListener{
 	public JDomiciliario() {
 		setTitle("VENTANA DOMICILIARIO");
 		//setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		Administrador administrador =new Administrador();
 		iniciarComponentes();	
 		setLocationRelativeTo(null);
 	}
@@ -81,8 +84,14 @@ public class JDomiciliario extends JFrame implements ActionListener{
 			dispose();
 		}
 		if(btnListaDomiciliarios==e.getSource()) {
-			JInfoDomiciliario JID= new JInfoDomiciliario("ListaDomiciliarios");
-			JID.setVisible(true);
+			//JInfoDomiciliario JID= new JInfoDomiciliario("ListaDomiciliarios");
+			//JID.setVisible(true);
+		    Domiciliario [] h= administrador.getDomiciliarios();
+            String t="";
+		    for (int i=0;i<h.length;i++) {
+				t += h[i].getNombre() + "\n";
+			}
+		    JOptionPane.showMessageDialog(null, t);
 			dispose();
 		}
 		if(btnEliminarDomiciliario==e.getSource()) {
