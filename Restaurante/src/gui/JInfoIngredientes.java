@@ -129,7 +129,7 @@ public class JInfoIngredientes extends JFrame implements ActionListener {
 				dispose();
 				String nIngrediente = txtNombreIngrediente.getText();
 				int cIng = boxCantidadIngredientes.getSelectedIndex();
-				administrador.AddIngrediente(nIngrediente, cIng);
+				//administrador.AddIngrediente(nIngrediente, cIng);
 				JOptionPane.showMessageDialog(null, "El ingrediente se ha añadido con exito");
 				
 				break;
