@@ -5,5 +5,6 @@ public class mainRestaurante {
 		Administrador Admin= new Administrador();
 		Admin.presentarVentanaRestaurante();
 		//rr
+		//hh
 	}
 }
