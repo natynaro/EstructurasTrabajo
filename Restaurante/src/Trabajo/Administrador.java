@@ -110,6 +110,7 @@ public class Administrador implements Serializable {
 
 	public void setPedidosTotal(Pedidos[] pedidosTotal) {
 		this.pedidosTotal = pedidosTotal;
+		guardarFicheros();
 	}
 
 	public Ingredientes[] getIngredientesTotal() {
@@ -118,6 +119,7 @@ public class Administrador implements Serializable {
 
 	public void setIngredientesTotal(Ingredientes[] ingredientesTotal) {
 		this.ingredientesTotal = ingredientesTotal;
+		guardarFicheros();
 	}
 
 	public Platos[] getPlatosTotal() {
@@ -126,6 +128,7 @@ public class Administrador implements Serializable {
 
 	public void setPlatosTotal(Platos[] platosTotal) {
 		this.platosTotal = platosTotal;
+		guardarFicheros();
 	}
 
 	public Domiciliario[] getDomiciliarios() {
@@ -134,6 +137,7 @@ public class Administrador implements Serializable {
 
 	public void setDomiciliarios(Domiciliario[] domiciliarios) {
 		this.domiciliarios = domiciliarios;
+		guardarFicheros();
 	}
 
 	// Métodos
@@ -413,8 +417,12 @@ public class Administrador implements Serializable {
 				}
 				ingredientesTotal = Arrays.copyOf(ingredientesTotal, ingredientesTotal.length - 1);
 				guardarFicheros();
+<<<<<<< HEAD
 			} else
 				throw new EListaVacia("La lista de ingredientes est� vac�a, a�ada primero ingredientes");
+=======
+			}else throw new EListaVacia("La lista de ingredientes est� vac�a, a�ada primero ingredientes");
+>>>>>>> 3867ec9cb9693879cdfef6ff6272bd2024335b68
 		} catch (ENoExiste e) {
 			e.printStackTrace();
 		}
