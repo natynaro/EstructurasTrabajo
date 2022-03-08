@@ -6,7 +6,7 @@ import java.io.*;
 import gui.JDomiciliario;
 import gui.JRestaurante;
 
-//REVISAR EL THROW Y CAMBIARLO DE DEVOLVER-1
+
 
 public class Administrador implements Serializable {
 	private Pedidos[] pedidosTotal;
@@ -98,11 +98,7 @@ public class Administrador implements Serializable {
 			System.out.println(e.getMessage());
 		}
 	}
-	/*
-	 * public Administrador() { this.pedidosTotal = new Pedidos[0];
-	 * this.ingredientesTotal = new Ingredientes[0]; this.platosTotal = new
-	 * Platos[0]; this.domiciliarios = new Domiciliario[0]; }
-	 */
+	
 
 	public Pedidos[] getPedidosTotal() {
 		return pedidosTotal;
@@ -167,16 +163,26 @@ public class Administrador implements Serializable {
 	// me dan los nombres platos, entonces uso el método buscar plato para crear el
 // array de platos y se crea el usuario que va a hacer el pedido
 	public void NuevoPedido(String[] nombresPlatos, String nombreUsu, String direccionUsu, String telefonoUsu)
-			throws ENoExiste, EListaVacia {
+			throws ENoExiste, EListaVacia,ENoIngre {
 
 		Platos[] platosPedir = new Platos[0];
 		double totalPrecio = 0;
 
 		for (int i = 0; i < nombresPlatos.length; i++) {
 			int posicion = buscarPlato(nombresPlatos[i].toLowerCase());
+			Ingredientes [] ingre=platosTotal[posicion].getIngredientes();
 			platosPedir = Arrays.copyOf(platosPedir, platosPedir.length + 1);
 			platosPedir[platosPedir.length - 1] = platosTotal[posicion];
 			totalPrecio = totalPrecio + platosPedir[platosPedir.length - 1].getPrecio();
+			for (int j =0; j < ingre.length; j++) {
+				int h=ingre[j].getCantidad();
+				int t= BuscarIngrediente(ingre[j].getNombre());
+				int n=ingredientesTotal[t].getCantidad()-h;
+				if(n>=0) {
+				ingredientesTotal[t].setCantidad(n);
+				}else throw new ENoIngre("La cantidad de "+ ingre[j].getNombre() +" es insuficiente " );
+				}
+			
 		}
 
 		Usuario usuario = new Usuario(nombreUsu.toLowerCase(), direccionUsu.toLowerCase(), telefonoUsu.toLowerCase());
@@ -231,15 +237,12 @@ public class Administrador implements Serializable {
 	// se borra el plato de acuerdo con el nombre
 	public void borrarPlato(String nombre) throws ENoExiste, EListaVacia {
 		if (platosTotal.length > 0 && platosTotal != null) {
-			int i = buscarPlato(nombre.toLowerCase());
-			int j = i + 1;
-			while (i < platosTotal.length-1) {
-				platosTotal[i] = platosTotal[j];
-				i++;
-				j++;
-				platosTotal = Arrays.copyOf(platosTotal, platosTotal.length - 1);
-				guardarFicheros();
+			int d = buscarPlato(nombre.toLowerCase());
+			for (int i = d; i < platosTotal.length - 1; i++) {
+				platosTotal[i] = platosTotal[i + 1];
 			}
+			platosTotal = Arrays.copyOf(platosTotal, platosTotal.length - 1);
+			guardarFicheros();
 		} else
 			throw new EListaVacia("La lista de platos está vacía, añada primero un plato");
 
@@ -411,7 +414,7 @@ public class Administrador implements Serializable {
 	}
 
 	public void EliminarIngrediente(String nombre) throws EListaVacia, ENoExiste, IOException {
-		try {
+	
 			int index;
 			index = BuscarIngrediente(nombre);
 			if (ingredientesTotal != null && ingredientesTotal.length > 0) {
@@ -421,10 +424,7 @@ public class Administrador implements Serializable {
 				ingredientesTotal = Arrays.copyOf(ingredientesTotal, ingredientesTotal.length - 1);
 				guardarFicheros();
 			} else
-				throw new EListaVacia("La lista de ingredientes est� vac�a, a�ada primero ingredientes");
-		} catch (ENoExiste e) {
-			e.printStackTrace();
-		}
+				throw new EListaVacia("La lista de ingredientes está vacía, añada primero ingredientes");
 	}
 	
 //INTERFAZ DE USUARIO
@@ -459,6 +459,12 @@ public class Administrador implements Serializable {
 
 	public class EObjetoYaExiste extends Exception {
 		public EObjetoYaExiste(String mensaje) {
+			super(mensaje);
+		}
+
+	}
+	public class ENoIngre extends Exception{
+		public ENoIngre(String mensaje) {
 			super(mensaje);
 		}
 	}

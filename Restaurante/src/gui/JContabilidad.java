@@ -65,13 +65,13 @@ import java.awt.FlowLayout;
 			
 			btnReporte = new JButton("Reporte de Pedidos");
 			btnReporte.setFont(new Font("Dialog", Font.PLAIN, 20));
-			btnReporte.setBounds(109, 154, 215, 50);
+			btnReporte.setBounds(82, 154, 242, 50);
 			btnReporte.addActionListener(this);
 			panelPrincipal.add(btnReporte);
 			
 			btnVentas = new JButton("Ventas Acumuladas");
 			btnVentas.setFont(new Font("Dialog", Font.PLAIN, 20));
-			btnVentas.setBounds(109, 92, 215, 50);
+			btnVentas.setBounds(82, 92, 242, 50);
 			btnVentas.addActionListener(this);
 			panelPrincipal.add(btnVentas);
 			

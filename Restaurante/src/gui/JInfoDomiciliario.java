@@ -100,7 +100,7 @@ public class JInfoDomiciliario extends JFrame implements ActionListener {
 			txtNombre.setVisible(true);
 			break;
 		case "AddDomiciliario":
-			lblTitulo.setText("A�adir domiciliarios");
+			lblTitulo.setText("Añadir domiciliarios");
 			txtNombre.setVisible(true);
 			break;
 		case "Completado":

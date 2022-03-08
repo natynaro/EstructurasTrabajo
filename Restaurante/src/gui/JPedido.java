@@ -11,6 +11,7 @@ import javax.swing.border.EmptyBorder;
 import Trabajo.*;
 import Trabajo.Administrador.EListaVacia;
 import Trabajo.Administrador.ENoExiste;
+import Trabajo.Administrador.ENoIngre;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -171,7 +172,7 @@ public class JPedido extends JFrame implements ActionListener {
 				admin.NuevoPedido(platosTotal, nombU, dirU, telU);
 				JOptionPane.showMessageDialog(null, "Pedido exitoso");
 				
-			} catch (ENoExiste | EListaVacia e1) {
+			} catch (ENoExiste | EListaVacia | ENoIngre e1) {
 				JOptionPane.showMessageDialog(null, e1.getMessage());
 			}
 		}

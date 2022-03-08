@@ -54,7 +54,7 @@ public class JPlatos extends JFrame implements ActionListener {
 		lblNewLabel.setBounds(174, 6, 78, 41);
 		PanelPlatos.add(lblNewLabel);
 		
-		btnAddPlato = new JButton("A�adir plato");
+		btnAddPlato = new JButton("Añadir plato");
 		btnAddPlato.setBounds(35, 59, 165, 50);
 		btnAddPlato.addActionListener(this);
 		PanelPlatos.add(btnAddPlato);

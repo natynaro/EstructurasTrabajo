@@ -97,16 +97,18 @@ public class JInfoIngredientes extends JFrame implements ActionListener {
 		
 		switch (accion) {
 		case "AddIngrediente":
-			lblTitulo.setText("A�adir Ingrediente");
+			lblTitulo.setText("Añadir Ingrediente");
 			boxCantidadIngredientes.setVisible(true);
 			boxCantidadIngredientes.setToolTipText("Cantidad");
 			txtNombreIngrediente.setVisible(true);
 			txtNombreIngrediente.setToolTipText("Ingrese el nombre del ingrediente");
+			comboBox.setVisible(true);
 			break;
 		case "EliminarIngrediente":
 			lblTitulo.setText("Eliminar Ingrediente");
 			txtNombreIngrediente.setVisible(true);
 			txtNombreIngrediente.setToolTipText("Ingrese el nombre del ingrediente que desea eliminar");
+			comboBox.setVisible(true);
 			break;
 		case "ListaIngredientes":
 			lblTitulo.setText("Lista ingredientes");
@@ -131,7 +133,6 @@ public class JInfoIngredientes extends JFrame implements ActionListener {
 				if (administrador.IngredienteExiste(nIngrediente)) {
 					JOptionPane.showMessageDialog(null, "El ingrediente ya existe, ingrese un ingrediente nuevo");
 					JIngredientes jg = new JIngredientes();
-					
 					break;
 				} else {
 					try {
