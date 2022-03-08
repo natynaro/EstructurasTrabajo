@@ -1,6 +1,8 @@
 package Trabajo;
 
-public class Platos {
+import java.io.Serializable;
+
+public class Platos implements Serializable{
 	private String nombre;
 	private Ingredientes[] Ingredientes;
 	private double precio;

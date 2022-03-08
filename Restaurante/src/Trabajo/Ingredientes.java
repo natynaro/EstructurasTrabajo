@@ -1,6 +1,8 @@
 package Trabajo;
 
-public class Ingredientes {
+import java.io.Serializable;
+
+public class Ingredientes implements Serializable {
 	private String nombre;
 	private int cantidad;
 	

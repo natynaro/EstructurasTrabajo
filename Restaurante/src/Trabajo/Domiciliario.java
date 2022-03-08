@@ -1,6 +1,8 @@
 package Trabajo;
 
-public class Domiciliario {
+import java.io.Serializable;
+
+public class Domiciliario implements Serializable{
 	private String nombre;
 	
 	private int numPedidos;

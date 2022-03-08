@@ -8,14 +8,14 @@ import gui.JRestaurante;
 
 //REVISAR EL THROW Y CAMBIARLO DE DEVOLVER-1
 
-public class Administrador {
+public class Administrador implements Serializable{
 	private Pedidos[] pedidosTotal;
 	private Ingredientes[] ingredientesTotal;
 	private Platos[] platosTotal;
 	private Domiciliario[] domiciliarios;
 
 	public Administrador() {
-		cargarFicheros();
+		//cargarFicheros();
 
 	}
 
