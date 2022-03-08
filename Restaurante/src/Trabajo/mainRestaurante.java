@@ -4,22 +4,7 @@ import java.io.*;
 
 public class mainRestaurante implements Serializable{
 	public static void main(String[] args) throws IOException {
-		File fl=new File("Domiciliarios.txt");
-		if(!fl.exists()) {
-			fl.createNewFile();
-		}
-		File ft=new File("Pedidos.txt");
-		if(!ft.exists()) {
-			ft.createNewFile();
-		}
-		File fy=new File("Platos.txt");
-		if(!fy.exists()) {
-			fy.createNewFile();
-		}
-		File fu =new File("Ingredientes.txt");
-		if(!fu.exists()) {
-			fu.createNewFile();
-		}
+
 		Administrador Admin= new Administrador();
 		
 		
