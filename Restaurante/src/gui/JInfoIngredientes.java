@@ -19,6 +19,7 @@ import javax.swing.JComboBox;
 import javax.swing.JButton;
 import javax.swing.DefaultComboBoxModel;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.awt.event.ActionEvent;
 import javax.swing.UIManager;
 import javax.swing.JList;
@@ -143,6 +144,9 @@ public class JInfoIngredientes extends JFrame implements ActionListener {
 					JOptionPane.showMessageDialog(null,e1.getMessage()); 
 				}catch(EListaVacia e2) {
 					JOptionPane.showMessageDialog(null,e2.getMessage()); 
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
 				}
 			
 			
