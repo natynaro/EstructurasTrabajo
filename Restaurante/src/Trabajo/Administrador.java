@@ -332,7 +332,7 @@ public class Administrador implements Serializable {
 	}
 
 	// Me suma todas las ganancias del arreglo de pedidos actual
-	public double ventasDelDia() throws EListaVacia {
+	public double ventasTotal() throws EListaVacia {
 		double v = 0;
 		if (pedidosTotal != null) {
 			for (int i = 0; i < pedidosTotal.length; i++) {
@@ -346,11 +346,11 @@ public class Administrador implements Serializable {
 
 	// Me enumera los pedidos y cuánto facturó cada uno, del arreglo de pedidos
 // actual
-	public String reporteDiario() throws EListaVacia {
+	public String reportePedidos() throws EListaVacia {
 		String a = "";
 		if (pedidosTotal != null || pedidosTotal.length > 0) {
 			for (int i = 0; i < pedidosTotal.length; i++) {
-				a += "El pedido " + (i + 1) + "se factur� por un total de: " + pedidosTotal[i].getTotalPrecio() + "\n";
+				a += "El pedido " + (i + 1) + " se factur� por un total de: " + pedidosTotal[i].getTotalPrecio() + "\n";
 			}
 			return a;
 		} else
