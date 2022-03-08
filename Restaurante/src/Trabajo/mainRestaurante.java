@@ -43,17 +43,8 @@ public class mainRestaurante implements Serializable{
 		
 		Admin.guardarFicheros();
 		Admin.cargarFicheros();
-		System.out.println(Admin.getPlatosTotal());
-		
-		Platos plator= new Platos("Ensalada", i, 15000);
-		Platos[] z= {plato,plator};
-
-		Admin.setPlatosTotal(p);
-		Admin.guardarFicheros();
-		Admin.cargarFicheros();
-		System.out.println(Admin.getPlatosTotal());
-		
 		
 		Admin.presentarVentanaRestaurante();
+		//rrnataliaAAAAAa
 	}
 }

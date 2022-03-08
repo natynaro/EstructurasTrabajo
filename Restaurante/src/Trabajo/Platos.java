@@ -1,7 +1,6 @@
 package Trabajo;
 
 import java.io.Serializable;
-import java.util.Arrays;
 
 public class Platos implements Serializable{
 	private String nombre;
@@ -38,12 +37,4 @@ public class Platos implements Serializable{
 	public void setPrecio(double precio) {
 		this.precio = precio;
 	}
-
-	@Override
-	public String toString() {
-		return "Platos [nombre=" + nombre + ", Ingredientes=" + Arrays.toString(Ingredientes) + ", precio=" + precio
-				+ "]";
-	}
-	
-	
 }
