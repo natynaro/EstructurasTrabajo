@@ -1,7 +1,6 @@
 package Trabajo;
 
 import java.io.Serializable;
-
 public class Pedidos implements Serializable {
 	private Platos[] Platos;
 	private String codigo;

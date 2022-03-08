@@ -38,6 +38,7 @@ public class JInfoDomiciliario extends JFrame implements ActionListener {
 	public JInfoDomiciliario(String accion) {
 		setTitle("VENTANA INFO DOMICILIARIOS");
 		// setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		administrador=new Administrador();
 		this.accion = accion;
 		iniciarComponentes();
 		setLocationRelativeTo(null);
@@ -52,8 +53,9 @@ public class JInfoDomiciliario extends JFrame implements ActionListener {
 		contentPane.setLayout(null);
 
 		list = new JList();
-		list.setVisible(false);
+		list.setVisible(true);
 		list.setBounds(17, 28, 167, 192);
+		list.setListData(administrador.getDomiciliarios());
 		contentPane.add(list);
 
 		btnvolver = new JButton("volver");
@@ -91,7 +93,6 @@ public class JInfoDomiciliario extends JFrame implements ActionListener {
 		case "ListaDomiciliarios":
 			lblTitulo.setText("Lista de domiciliarios");
 			list.setVisible(true);
-			list.setListData(administrador.getDomiciliarios());
 			btnAceptar.setVisible(false);
 			break;
 		case "EliminarDomiciliario":
@@ -121,24 +122,32 @@ public class JInfoDomiciliario extends JFrame implements ActionListener {
 
 		if (btnAceptar == e.getSource()) {
 			switch (accion) {
-			/*case "ListaDomiciliarios":
+			case "ListaDomiciliarios":
 				// mostrar la lista
 				dispose();
 				break;
-*/
+
 			case "EliminarDomiciliario":
 				String nom = txtNombre.getText();
 				try {
-					administrador.quitarDomiciliario(nom);
-					JOptionPane.showMessageDialog(null,"El domiciliario se eliminó con éxito");
+					//administrador=new Administrador();
+					if(administrador.buscarDomiciliario(nom)>=0) {
+						administrador.quitarDomiciliario(nom);
+						JOptionPane.showMessageDialog(null,"El domiciliario se eliminó con éxito");
+					
 					break;
+					}
 				} catch (EListaVacia | ENoExiste e1) {
 					JOptionPane.showMessageDialog(null, e1.getMessage());
+					break;
 				}
+				JDomiciliario jd=new JDomiciliario();
+				jd.setVisible(true);
 				dispose();
 
 			case "AddDomiciliario":
 				String nom2 = txtNombre.getText();
+				administrador=new Administrador();
 				administrador.addDomiciliario(nom2);
 				dispose();
 				break;

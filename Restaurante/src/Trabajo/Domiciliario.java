@@ -8,6 +8,12 @@ public class Domiciliario implements Serializable{
 	private int numPedidos;
 	private boolean disponibilidad;
 	
+	@Override
+	public String toString() {
+		return "Domiciliario [nombre=" + nombre + ", numPedidos=" + numPedidos + ", disponibilidad=" + disponibilidad
+				+ "]";
+	}
+
 	public Domiciliario(String nombre) {
 		super();
 		this.nombre = nombre;
