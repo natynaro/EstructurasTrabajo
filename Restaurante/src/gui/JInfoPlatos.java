@@ -79,6 +79,7 @@ public class JInfoPlatos extends JFrame implements ActionListener{
 		
 		list = new JList();
 		list.setVisible(false);
+		list.setListData(administrador.getPlatosTotal());
 		list.setBounds(21, 18, 157, 210);
 		contentPane.add(list);
 		
@@ -125,7 +126,7 @@ public class JInfoPlatos extends JFrame implements ActionListener{
 			break;
 		
 		case "AddPlato":
-			lblTitulo.setText("Añadir Plato");
+			lblTitulo.setText("Aï¿½adir Plato");
 			txtNombrePlato.setVisible(true);
 			txtNombrePlato.setToolTipText("Ingrese el nombre del plato");
 			txtPrecio.setVisible(true);
@@ -169,6 +170,7 @@ public class JInfoPlatos extends JFrame implements ActionListener{
 					break;
 				} catch (ENoExiste | EListaVacia | EPrecioNeg e1) {
 					JOptionPane.showMessageDialog(null,e1.getMessage()); 
+					break;
 				}
 				
 			
@@ -179,6 +181,7 @@ public class JInfoPlatos extends JFrame implements ActionListener{
 					break;
 				} catch (ENoExiste | EListaVacia e1) {
 					JOptionPane.showMessageDialog(null,e1.getMessage()); 
+					break;
 				}
 				
 			
@@ -190,7 +193,8 @@ public class JInfoPlatos extends JFrame implements ActionListener{
 					administrador.addPlato(plato2, null, precio2);
 					break;
 				} catch (ENoExiste | EListaVacia e1) {
-					JOptionPane.showMessageDialog(null,e1.getMessage()); 
+					JOptionPane.showMessageDialog(null,e1.getMessage());
+					break;
 				}
 				
 			
@@ -202,6 +206,7 @@ public class JInfoPlatos extends JFrame implements ActionListener{
 					break;
 				} catch (EListaVacia | ENoExiste e1) {
 					JOptionPane.showMessageDialog(null,e1.getMessage()); 
+					break;
 				}
 				
 				
