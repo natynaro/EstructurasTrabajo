@@ -55,6 +55,7 @@ public class JInfoDomiciliario extends JFrame implements ActionListener {
 		list = new JList();
 		list.setVisible(true);
 		list.setBounds(17, 28, 167, 192);
+// list.setListData(administrador.getDomiciliarios());
 		contentPane.add(list);
 
 		btnvolver = new JButton("volver");
@@ -122,6 +123,7 @@ public class JInfoDomiciliario extends JFrame implements ActionListener {
 		if (btnAceptar == e.getSource()) {
 			switch (accion) {
 			case "ListaDomiciliarios":
+// mostrar la lista
 				dispose();
 				break;
 
@@ -131,36 +133,64 @@ public class JInfoDomiciliario extends JFrame implements ActionListener {
 					if (administrador.buscarDomiciliario(nom) >= 0) {
 						administrador.quitarDomiciliario(nom);
 						JOptionPane.showMessageDialog(null, "El domiciliario se elimin� con �xito");
+						JDomiciliario jd = new JDomiciliario();
+						jd.setVisible(true);
+						dispose();
+						break;
+					} else {
+						JOptionPane.showMessageDialog(null, "El domiciliario que intenta eliminar no existe");
+						JDomiciliario jd = new JDomiciliario();
+						jd.setVisible(true);
+						dispose();
 						break;
 					}
 				} catch (EListaVacia | ENoExiste e1) {
-					JOptionPane.showMessageDialog(null, e1.getMessage());
-					break;
+
 				}
-				JDomiciliario jd = new JDomiciliario();
-				jd.setVisible(true);
-				dispose();
+				break;
 
 			case "AddDomiciliario":
 				String nom2 = txtNombre.getText();
-				administrador.addDomiciliario(nom2);
-				JOptionPane.showMessageDialog(null, "El domiciliario se añadió con éxito");
-				JDomiciliario jg = new JDomiciliario();
-				jg.setVisible(true);
-				dispose();
+				try {
+					if (administrador.buscarDomiciliario(nom2) >= 0) {
+						JOptionPane.showMessageDialog(null, "El domiciliario que intenta añadir ya existe");
+						JDomiciliario jg = new JDomiciliario();
+						jg.setVisible(true);
+						dispose();
+					} else {
+						administrador.addDomiciliario(nom2);
+						JOptionPane.showMessageDialog(null, "El domiciliario se añadió con éxito");
+						JDomiciliario jg = new JDomiciliario();
+						jg.setVisible(true);
+						dispose();
+					}
+					break;
+				} catch (ENoExiste | EListaVacia e2) {
+// TODO Auto-generated catch block
+					e2.printStackTrace();
+				}
 				break;
-
 			case "Completado":
 				String nom3 = txtNombre.getText();
 				try {
-					administrador.setDisponible(nom3, true);
-					JDomiciliario ji = new JDomiciliario();
-					ji.setVisible(true);
-					dispose();
-					break;
+					if (administrador.buscarDomiciliario(nom3) >= 0) {
+						administrador.setDisponible(nom3, true);
+						JOptionPane.showMessageDialog(null, "Disponibilidad cambiada con éxito");
+						JDomiciliario ji = new JDomiciliario();
+						ji.setVisible(true);
+						dispose();
+						break;
+					} else {
+						JOptionPane.showMessageDialog(null, "El domiciliario que intenta usar no existe");
+						JDomiciliario ji = new JDomiciliario();
+						ji.setVisible(true);
+						dispose();
+						break;
+					}
 				} catch (ENoExiste | EListaVacia e1) {
 					JOptionPane.showMessageDialog(null, e1.getMessage());
 				}
+				break;
 			}
 
 		}

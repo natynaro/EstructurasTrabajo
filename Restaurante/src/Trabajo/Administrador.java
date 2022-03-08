@@ -417,17 +417,13 @@ public class Administrador implements Serializable {
 				}
 				ingredientesTotal = Arrays.copyOf(ingredientesTotal, ingredientesTotal.length - 1);
 				guardarFicheros();
-<<<<<<< HEAD
 			} else
 				throw new EListaVacia("La lista de ingredientes est� vac�a, a�ada primero ingredientes");
-=======
-			}else throw new EListaVacia("La lista de ingredientes est� vac�a, a�ada primero ingredientes");
->>>>>>> 3867ec9cb9693879cdfef6ff6272bd2024335b68
 		} catch (ENoExiste e) {
 			e.printStackTrace();
 		}
 	}
-
+	
 //INTERFAZ DE USUARIO
 	public void presentarVentanaRestaurante() {
 		try {
