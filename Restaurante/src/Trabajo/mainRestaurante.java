@@ -4,9 +4,10 @@ import java.io.*;
 
 import Trabajo.Administrador.EListaVacia;
 import Trabajo.Administrador.ENoExiste;
+import Trabajo.Administrador.EObjetoYaExiste;
 
 public class mainRestaurante implements Serializable{
-	public static void main(String[] args) throws IOException, EListaVacia, ENoExiste {
+	public static void main(String[] args) throws IOException, EListaVacia, ENoExiste, EObjetoYaExiste {
 		Administrador Admin = new Administrador();
 		Admin.presentarVentanaRestaurante();
 		Domiciliario dom= new Domiciliario("Pedro");
@@ -26,5 +27,6 @@ public class mainRestaurante implements Serializable{
 		Admin.setPedidosTotal(y);
 		
 		Admin.setPlatosTotal(p);
+		Admin.AddIngrediente("Esparragos", 2);
 	}
 }

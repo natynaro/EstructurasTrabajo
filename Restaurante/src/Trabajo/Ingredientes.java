@@ -27,11 +27,4 @@ public class Ingredientes implements Serializable {
 	public void setCantidad(int cantidad) {
 		this.cantidad = cantidad;
 	}
-
-	
-
-
-	
-	
-	
 }
