@@ -15,7 +15,7 @@ public class Administrador implements Serializable{
 	private Domiciliario[] domiciliarios;
 
 	public Administrador() {
-		//cargarFicheros();
+		cargarFicheros();
 
 	}
 
@@ -145,6 +145,7 @@ public class Administrador implements Serializable{
 		if(precio>0) {
 			int i=buscarPlato(plato);
 			 platosTotal[i].setPrecio(precio);
+			 guardarFicheros();
 		}else throw new EPrecioNeg("Debes ingresar un número mayor a 0");
 	}
 
@@ -153,6 +154,7 @@ public class Administrador implements Serializable{
 		if(nuevosIngre.length!=0) {
 			int i=buscarPlato(plato);
 				 platosTotal[i].setIngredientes(nuevosIngre);
+				 guardarFicheros();
 		}else throw new EListaVacia("No has añadido ningún plato, añade primero un plato");
 	}
 
@@ -196,7 +198,7 @@ public class Administrador implements Serializable{
 		Pedidos pedido= new Pedidos(platosPedir, codigo, totalPrecio, usuario, domiciliario);
 		pedidosTotal=Arrays.copyOf(pedidosTotal, pedidosTotal.length+1);
 		pedidosTotal[pedidosTotal.length-1]=pedido;
-		
+		guardarFicheros();
 	}
 		
 	//se crea un nuevo plato con nombre, sus ingredientes y el precio
@@ -205,9 +207,11 @@ public class Administrador implements Serializable{
 		if(platosTotal ==null) {
 			platosTotal = new Platos[1];
 			platosTotal[0]= new Platos(nombre.toLowerCase(),ingredientesTotal,precio);
+			guardarFicheros();
 		}else {
 			platosTotal= Arrays.copyOf(platosTotal,platosTotal.length+1);
 			platosTotal[platosTotal.length-1]= new Platos(nombre.toLowerCase(),ingredientesTotal,precio);
+			guardarFicheros();
 		}		
 		
 	}
@@ -221,6 +225,7 @@ public class Administrador implements Serializable{
 				platosTotal[i]= platosTotal[j];
 				i++;j++;
 			platosTotal= Arrays.copyOf(platosTotal, platosTotal.length-1);
+			guardarFicheros();
 				}
 		}else throw new EListaVacia("La lista de platos está vacía, añada primero un plato");
 		
@@ -262,9 +267,11 @@ public class Administrador implements Serializable{
 		if(domiciliarios == null) {
 			domiciliarios = new Domiciliario[1];
 			domiciliarios[0] = new Domiciliario(nombre.toLowerCase());
+			guardarFicheros();
 		}else {
 			domiciliarios = Arrays.copyOf(domiciliarios, domiciliarios.length + 1);
 			domiciliarios[domiciliarios.length - 1] = new Domiciliario(nombre.toLowerCase());
+		    guardarFicheros();
 		}
 	}
 	
@@ -274,10 +281,11 @@ public class Administrador implements Serializable{
 			int d;
 			d = buscarDomiciliario(nombre.toLowerCase());
 			if(domiciliarios!=null && domiciliarios.length>0) {
-				for(int i = d; i<domiciliarios.length;i++) {
+				for(int i = d; i<domiciliarios.length-1;i++) {
 					domiciliarios[i]=domiciliarios[i+1];
 				}	
 			domiciliarios= Arrays.copyOf(domiciliarios, domiciliarios.length-1);
+			guardarFicheros();
 			}else throw new EListaVacia("No hay domiciliarios para eliminar");
 		} catch (ENoExiste e) {
 			// TODO Auto-generated catch block
@@ -302,6 +310,7 @@ public class Administrador implements Serializable{
 	public void setDisponible(String nombre, boolean bol) throws ENoExiste, EListaVacia {
 		int pos= buscarDomiciliario(nombre.toLowerCase());
 		domiciliarios[pos].setDisponibilidad(bol);
+		guardarFicheros();
 	}
 	
 	//Me suma todas las ganancias del arreglo de pedidos actual
@@ -353,6 +362,7 @@ public class Administrador implements Serializable{
 						ingredientesTotal[u] = ingredientesTotal[u+1];
 					}
 					ingredientesTotal = Arrays.copyOf(ingredientesTotal, ingredientesTotal.length + 1);
+					guardarFicheros();
 					}
 				}
 				if(seEncontroElIngrediente == false) {
