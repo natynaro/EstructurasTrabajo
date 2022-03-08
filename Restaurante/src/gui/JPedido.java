@@ -29,7 +29,7 @@ import java.awt.Color;
 
 public class JPedido extends JFrame implements ActionListener{
 
-	//pediidoodododo
+
 	private JPanel contentPane;
 	private JTextField txtNombre;
 	private JTextField txtTel;
@@ -57,6 +57,8 @@ public class JPedido extends JFrame implements ActionListener{
 	}
 	
 	public void iniciarComponentes(){
+		admin= new Administrador();
+		
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -107,7 +109,7 @@ public class JPedido extends JFrame implements ActionListener{
 		contentPane.add(lblPlatos);
 		
 		cbxPlatos = new JComboBox();
-		cbxPlatos.setModel(new DefaultComboBoxModel(new String[] {"Plato"}));
+		cbxPlatos.setModel(new DefaultComboBoxModel(admin.getPlatosTotal()));
 		cbxPlatos.setBounds(26, 195, 222, 29);
 		contentPane.add(cbxPlatos);
 		
@@ -129,7 +131,7 @@ public class JPedido extends JFrame implements ActionListener{
 		btnVolver.addActionListener(this);
 		contentPane.add(btnVolver);
 		
-		btnAddOtroPlato = new JButton("Añadir otro Plato");
+		btnAddOtroPlato = new JButton("Aï¿½adir otro Plato");
 		btnAddOtroPlato.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
 		btnAddOtroPlato.setBackground(Color.WHITE);
 		btnAddOtroPlato.setBounds(107, 236, 150, 30);
@@ -153,17 +155,18 @@ public class JPedido extends JFrame implements ActionListener{
 		}if(btnAddOtroPlato==e.getSource()) {
 			int numPlato= cbxCantidad.getSelectedIndex();
 			String nombPlato= (String) cbxPlatos.getSelectedItem();
-			platosTotal= Arrays.copyOf(platosTotal, platosTotal.length+1);
-			platosTotal[platosTotal.length-1]=nombPlato;
-			
-			
+			for(int i=numPlato; i>0;i--) {
+				platosTotal= Arrays.copyOf(platosTotal, platosTotal.length+1);
+				platosTotal[platosTotal.length-1]=nombPlato;
+			}
+			JOptionPane.showMessageDialog(null,"AÃ±adido");
 		}if(btnConfirmarPedido==e.getSource()) {
-			platosTotal= Arrays.copyOf(platosTotal,platosTotal.length+1);
 			String nombU= txtNombre.getText();
 			String telU= txtTel.getText();
 			String dirU=txtDirec.getText();
 			try {
 				admin.NuevoPedido(platosTotal, nombU, dirU, telU);
+				JOptionPane.showMessageDialog(null,"Pedido exitoso");
 			} catch (ENoExiste | EListaVacia e1) {
 				JOptionPane.showMessageDialog(null, e1.getMessage()); 
 			}
