@@ -125,7 +125,7 @@ public class JInfoPlatos extends JFrame implements ActionListener{
 			break;
 		
 		case "AddPlato":
-			lblTitulo.setText("Aï¿½adir Plato");
+			lblTitulo.setText("Añadir Plato");
 			txtNombrePlato.setVisible(true);
 			txtNombrePlato.setToolTipText("Ingrese el nombre del plato");
 			txtPrecio.setVisible(true);
