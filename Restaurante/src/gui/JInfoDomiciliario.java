@@ -123,7 +123,7 @@ public class JInfoDomiciliario extends JFrame implements ActionListener {
 		if (btnAceptar == e.getSource()) {
 			switch (accion) {
 			case "ListaDomiciliarios":
-// mostrar la lista
+				// mostrar la lista
 				dispose();
 				break;
 
@@ -145,9 +145,10 @@ public class JInfoDomiciliario extends JFrame implements ActionListener {
 						break;
 					}
 				} catch (EListaVacia | ENoExiste e1) {
-
+					JOptionPane.showMessageDialog(null,e1.getMessage());
+					break;
 				}
-				break;
+				
 
 			case "AddDomiciliario":
 				String nom2 = txtNombre.getText();
@@ -157,19 +158,21 @@ public class JInfoDomiciliario extends JFrame implements ActionListener {
 						JDomiciliario jg = new JDomiciliario();
 						jg.setVisible(true);
 						dispose();
+						break;
 					} else {
 						administrador.addDomiciliario(nom2);
 						JOptionPane.showMessageDialog(null, "El domiciliario se añadió con éxito");
 						JDomiciliario jg = new JDomiciliario();
 						jg.setVisible(true);
 						dispose();
+						break;
 					}
-					break;
+					
 				} catch (ENoExiste | EListaVacia e2) {
-// TODO Auto-generated catch block
-					e2.printStackTrace();
+					JOptionPane.showMessageDialog(null,e2.getMessage());
+					break;
 				}
-				break;
+				
 			case "Completado":
 				String nom3 = txtNombre.getText();
 				try {
@@ -189,8 +192,8 @@ public class JInfoDomiciliario extends JFrame implements ActionListener {
 					}
 				} catch (ENoExiste | EListaVacia e1) {
 					JOptionPane.showMessageDialog(null, e1.getMessage());
+					break;
 				}
-				break;
 			}
 
 		}
