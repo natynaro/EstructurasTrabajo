@@ -29,5 +29,6 @@ public class mainRestaurante implements Serializable{
 		Admin.setPlatosTotal(p);*/
 		//Admin.AddIngrediente("Esparragos", 2);
 		//Admin.borrarPlato(plato2.getNombre());
+		//Admin.borrarPlato("esparragosricos");
 	}
 }
