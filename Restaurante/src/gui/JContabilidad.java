@@ -85,14 +85,14 @@ import java.awt.FlowLayout;
 			}
 			if (btnReporte == e.getSource()) {
 				try {
-					JOptionPane.showMessageDialog(null, administrador.reporteDiario());
+					JOptionPane.showMessageDialog(null, administrador.reportePedidos());
 				} catch (HeadlessException | EListaVacia e1) {
 					JOptionPane.showMessageDialog(null,e1.getMessage());
 				}
 			}
 			if (btnVentas == e.getSource()) {
 				try {
-					JOptionPane.showMessageDialog(null, administrador.ventasDelDia());
+					JOptionPane.showMessageDialog(null, administrador.ventasTotal());
 				} catch (HeadlessException | EListaVacia e1) {
 					JOptionPane.showMessageDialog(null,e1.getMessage());
 				}
